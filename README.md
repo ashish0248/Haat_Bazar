@@ -30,4 +30,4 @@ B to CからB toB to Bへの展開を考えている『作り手』
 ## 設計書
 
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/15HH3gJ1HYQHmLaGlStf08SUDuDxCLRvtYGczPPuckAE/edit#gid=0
+https://docs.google.com/spreadsheets/d/15HH3gJ1HYQHmLaGlStf08SUDuDxCLRvtYGczPPuckAE/edit?usp=sharing
