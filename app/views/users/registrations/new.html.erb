@@ -12,9 +12,14 @@
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
+
             <div>
+              <!-- 前のページで入れてもらっている -->
+               <%= f.hidden_field :user_maker, :value => @user.user_maker %>
+            </div>
+            <div>
+                <%= f.label :プロフィール画像 %>
                 <%= f.attachment_field :profile_image,id: :post_img %>
-                        画像選択
             </div>
 
             <div class="field">
