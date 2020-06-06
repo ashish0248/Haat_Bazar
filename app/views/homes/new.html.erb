@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+
+       	<!-- 作り手側 -->
+       	<div class="col-xs-6">
+       		<!-- そのまま新規登録画面へ -->
+       		<%= link_to "作り手として新規登録する", new_user_registration_path %>
+       	</div>
+       	<!-- お店側 -->
+       	<div class="col-xs-6">
+       		<!-- user_makerをfalseにする -->
+       		<%= link_to "お店の経営者として新規登録する", new_user_registration_path(user_maker: 'false') %>
+       	</div>
+      </div>
+    </div>
+</div>
