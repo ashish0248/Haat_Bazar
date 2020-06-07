@@ -5,9 +5,9 @@
         </div>
         <div class="col-xs-6">
           <% if @user.user_maker == true %>
-            <h2>作り手　新規登路ページ</h2>
+            <h2>作り手　新規登録ページ</h2>
           <% else %>
-            <h2>お店　新規登路ページ</h2>
+            <h2>お店　新規登録ページ</h2>
           <% end %>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

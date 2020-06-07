@@ -14,4 +14,44 @@
  *= require_self
  */
   @import "bootstrap-sprockets";
-  @import "bootstrap";  
+  @import "bootstrap";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.dropdown:hover > .dropdown-menu{
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.individual {
+	float:left;
+	margin: 20px 60px 0 10px;
+	width: 500px;
+}
+
+
+.introduce {
+	float: left;
+}
+
+.registration-image {
+	background-image: image-url("registration.jpeg");
+	height: 500px;
+	width: auto;
+    background-size:cover;
+}

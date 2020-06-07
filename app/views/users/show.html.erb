@@ -1,2 +1,53 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="body">
+    <div class="container">
+       <div class="row">
+       		<div div class="col-xs-4">
+				<div>
+		    		<% if  @user.user_maker == true %>
+		    			<h4>作り手の自己紹介</h4>
+		    		<% else %>
+		    			<h4>お店の紹介</h4>
+		    		<% end %>
+		    		<div>
+							<div>
+					            <%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %>
+							</div>
+					        <div>
+					        	<h4><%= @user.name %></h4>
+					        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
+					        </div>
+					        <div style="margin-top: 50px">
+			    				<!-- 改行なども行ってくれるhelper -->
+			    				<%= simple_format @user.introduction %>
+			    		</div>
+			    	</div>
+		    	</div>       			
+       		</div>
+       		<div div class="col-xs-1">
+       		</div>
+       		<div div class="col-xs-7">
+				<div>
+					<% @photos.each do |photo| %>
+						<%= attachment_image_tag(photo, :photo_image, :fill, 500, 500 ) %>
+						<!-- 改行なども行ってくれるhelper -->
+						<%= simple_format photo.introduction %>
+						<% if @user == current_user %>
+							<%= link_to "編集する", edit_photo_path(photo.id), class: "btn btn-danger" %>
+							<%= link_to "削除する", photo_path(photo.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+						<% end %>
+					<% end %>
+		    	</div>
+		    	<% if @user == current_user %>
+		    		<%= form_for @photo_new, url: photos_path do |f| %>
+
+		    			<%= f.attachment_field :photo_image,id: :post_img %>
+
+		    			<%= f.text_area :introduction %>
+
+						<%= f.submit "追加する" %>
+		    		<% end %>
+		    	<% end %>
+       		</div>
+      	</div>
+    </div>
+</div>

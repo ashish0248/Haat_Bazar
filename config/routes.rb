@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :users
   get 'users/leave'
 
+  #photosコントローラー
+  resources :photos, only: [:create, :edit, :update, :destroy]
+
   #chat_roomsコントローラー
   resources :chat_rooms, only: [:index, :show, :create]
 

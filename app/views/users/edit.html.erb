@@ -1,2 +1,80 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="body">
+    <div class="container">
+       <div class="row">
+        <div class="col-xs-3">
+        </div>
+        <div class="col-xs-6">
+
+          <%= form_for @user, url: user_path(@user.id) do |f| %>
+            <%= render "devise/shared/error_messages", resource: @user %>
+
+            <div>
+            	<!-- 作り手とお店の変更は許可しない-->
+               <%= f.hidden_field :user_maker, :value => @user.user_maker %>
+            </div>
+            <div>
+                <%= f.label :プロフィール画像 %>
+                <%= f.attachment_field :profile_image,id: :post_img %>
+            </div>
+
+            <div class="field">
+                <% if  @user.user_maker == true %>
+                  <%= f.label :屋号 %>
+                <% else %>
+                  <%= f.label :店舗名 %>
+                <% end %>
+                <%= f.text_field :name, autofocus: true %>
+            </div>
+
+            <div class="field">
+                <% if  @user.user_maker == true %>
+                  <%= f.label :作り手名 %>
+                <% else %>
+                  <%= f.label :担当者名 %>
+                <% end %>
+                <%= f.text_field :staff, autofocus: true %>
+            </div>
+
+            <div class="field">
+                <% if  @user.user_maker == true %>
+                  <%= f.label :作り手の紹介 %>
+                <% else %>
+                  <%= f.label :お店の紹介 %>
+                <% end %>
+                <%= f.text_area :introduction, autofocus: true %>
+            </div>
+
+            <div>
+                <%= f.label :タグ %>
+                <%= f.text_field :tag_list, value: @user.tag_list.join(',') %>
+            </div>
+
+            <div class="field">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :郵便番号（ハイフンなし） %>
+                <%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %>
+            </div>
+             
+            <div class="field">
+                <%= f.label :住所 %>
+                <%= f.text_field :address, autofocus: true, :size => "50", class: "address", id:"address_name" %>
+             </div>
+
+            <div class="field">
+                <%= f.label :電話番号（ハイフンなし） %>
+                <%= f.text_field :phone_number, autofocus: true %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "更新する" %>
+            </div>
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+</div>
