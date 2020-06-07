@@ -26,4 +26,21 @@ class User < ApplicationRecord
   has_many :passive_notifications, foreign_key:"visited_id", class_name: "Notification", dependent: :destroy
 
 
+  # フォロー機能用
+  def follow(other_user)
+    # 同一事物ではないか？
+    unless self == other_user
+      # 見つからなければ作る
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+  
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
 end
