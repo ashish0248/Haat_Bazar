@@ -16,6 +16,12 @@
 					        	<h4><%= @user.name %></h4>
 					        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
 					        </div>
+					        <div style="margin: 20px">
+					        		<%= render 'relationships/follow', user: @user %>
+					        		<% if @user == current_user %>
+					        			<%= link_to 'フォロー・フォロワー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
+					        		<% end %>
+					        </div>
 					        <div style="margin-top: 50px">
 			    				<!-- 改行なども行ってくれるhelper -->
 			    				<%= simple_format @user.introduction %>
