@@ -1,2 +1,55 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="body">
+    <div class="container">
+
+    	<div style="margin: 300px;, background-color: black">
+    		<h2>Haat Bazar</h2>
+    	</div>
+
+    	<div class="row">
+	    	<div class="clearfix">
+	    		<h3>おすすめの作り手</h3>
+	    		<!-- 4人のみ載せる -->
+	    		<% count = 0 %>
+		    	<% @user_makers.each do |user_maker| %>
+		    		<% if count < 4 %>
+						<div class="individual" style="background-color: #ffffe0">
+							<div class="introduce">
+								<%= link_to user_path(user_maker.id) do %>
+					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
+					        <% end %>
+							</div>
+					        <div class="introduce">
+					        	<h4><%= user_maker.name %></h4>
+					        	<%= render 'users/tag_list', tag_list: user_maker.tag_list %>
+					        </div>
+					    </div>
+					    <% count = count + 1 %>
+				    <% end %>
+				<% end %>
+	    	</div>
+	    	<div  class="clearfix">
+	    		<h3>おすすめのお店</h3>
+	    		<!-- 4人のみ載せる -->
+	    		<% count = 0 %>
+		    	<% @user_shops.each do |user_shop| %>
+		    		<% if count < 4 %>
+						<div class="individual" style="background-color: #f0ffff">
+							<div class="introduce">
+								<%= link_to user_path(user_shop.id) do %>
+					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
+					        <% end %>
+							</div>
+					        <div class="introduce">
+					        	<h4><%= user_shop.name %></h4>
+					        	<%= render 'users/tag_list', tag_list: user_shop.tag_list %>
+					        </div>
+					    </div>
+					    <% count = count + 1 %>
+				    <% end %>
+				<% end %>
+	    	</div>
+      	</div>
+
+
+    </div>
+</div>

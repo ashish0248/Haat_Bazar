@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Naganocake</title>
+    <title>Haat Bazar</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,42 @@
 
   <body>
     <!-- ヘッダー部分 -->
-    
+      <nav id="gnavi" class="collapse navbar-collapse" style="background-color: rgba( 0, 0, 0, 0.5); margin-bottom: 50px">
+           <div class="navbar-header" style="font-size: 45px">
+            HaatBazar
+          </div>
+         <ul class="nav navbar-nav navbar-right" style="font-size: 16px">
+          <!-- 会員ログイン後 -->
+          <% if user_signed_in? %>
+            <li style=" margin: 15px 40px">ようこそ、　<%= current_user.name %>　さん！</li>
+            <li>
+              <div class="dropdown" style=" margin-top: 15px">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" , style="text-decoration: none; color: black">マイページ </a>
+                  <ul class="dropdown-menu">
+                      <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
+                    <li><%= link_to '通知', new_user_path, style:"text-decoration: none; color: black" %></li>
+                    <% if current_user.user_maker == true %>
+                        <li><%= link_to '屋号詳細', user_path(current_user.id) %></li>
+                    <% else %>
+                        <li><%= link_to '店舗詳細', user_path(current_user.id) %></li>
+                    <% end %>
+                  </ul>
+               </div>
+            </li>
+            <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "チャットルーム一覧", chat_rooms_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: black" %></li>
+
+          <!-- 非ログイン -->
+          <% else %>
+            <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "新規登録",  new_home_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, style:"text-decoration: none; color: black" %></li>
+          <% end %>
+        </ul>
+      </nav>
 
 
     <%= yield %>

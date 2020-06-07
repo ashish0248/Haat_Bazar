@@ -1,2 +1,83 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="body">
+    <div class="container">
+       <div class="row">
+       		<h2><%= @user.name %>さんの情報</h2>
+       		<!-- 作り手とお店でテーブルの色を変える -->
+       		<% if  @user.user_maker == true %>
+				<table class=" table table-striped table-bordered" style="background-color: #ffffe0">
+			<% else %>
+				<table class=" table table-striped table-bordered" style="background-color: #f0ffff">
+			<% end %>
+				<thead>
+
+					<% if  @user.user_maker == true %>
+					<!-- 作り手用 -->
+						<tr>
+							<th style="width: 200px;">プロフィール画像</th>
+							<td><%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %></td>
+						</tr>
+						<tr>
+							<th>ユーザー</th>
+			                <td>作り手</td>
+						</tr>
+						<tr>
+			                <th>屋号</th>
+			                <td><%= @user.name %></td>
+						</tr>
+						<tr>
+			                <th>作り手名</th>
+			                <td><%= @user.staff %></td>
+						</tr>
+						<tr>
+			                <th>作り手の紹介</th>
+			                <td><%= @user.introduction %></td>
+						</tr>
+					<% else %>
+					<!-- お店用 -->
+						<tr>
+							<th>プロフィール画像</th>
+							<td><%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %></td>
+						</tr>
+						<tr>
+							<th>ユーザー</th>
+			                <td>お店</td>
+						</tr>
+						<tr>
+			                <th>店舗名</th>
+			                <td><%= @user.name %></td>
+						</tr>
+						<tr>
+			                <th>担当者名</th>
+			                <td><%= @user.staff %></td>
+						</tr>
+						<tr>
+			                <th>お店の紹介</th>
+			                <td><%= simple_format @user.introduction %></td>
+						</tr>					
+					<% end %>
+					<!-- 共通部分 -->
+						<tr>
+			                <th>タグ</th>
+			                <td><%= render 'users/tag_list', tag_list: @user.tag_list %>
+			                </td>
+						</tr>
+						<tr>
+			                <th>郵便番号</th>
+			                <td><%= @user.postal_code %></td>
+						</tr>
+						<tr>
+			                <th>住所</th>
+			                <td><%= @user.address %></td>
+						</tr>
+						<tr>
+			                <th>電話番号</th>
+			                <td><%= @user.phone_number %></td>
+						</tr>
+
+				</thead>
+			</table>
+			<%= link_to '編集する', edit_user_path(current_user.id),class: "btn btn-primary", style: "color: white; text-decoration: none;"  %>
+
+      </div>
+    </div>
+</div>
