@@ -14,7 +14,7 @@
 		    		<% if count < 4 %>
 						<div class="individual" style="background-color: #ffffe0">
 							<div class="introduce">
-								<%= link_to user_path(user_maker.id) do %>
+								<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
 					        <% end %>
 							</div>
@@ -41,7 +41,7 @@
 		    		<% if count < 4 %>
 						<div class="individual" style="background-color: #f0ffff">
 							<div class="introduce">
-								<%= link_to user_path(user_shop.id) do %>
+								<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
 					        <% end %>
 							</div>
