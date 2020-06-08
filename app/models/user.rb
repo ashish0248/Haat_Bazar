@@ -43,4 +43,30 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+
+  # フォロー関係の通知
+  def create_notification_follow!(current_user)
+    #すでに通知が作成されているか確認
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
+  # チャット関係の通知
+  def create_notification_chat!(current_user)
+    #すでに通知が作成されているか確認
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'chat'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'chat'
+      )
+      notification.save if notification.valid?
+    end
+  end
 end

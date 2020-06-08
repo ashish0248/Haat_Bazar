@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   #relationshipsコントローラー
   resources :relationships, only: [:index, :create, :destroy]
 
+  #notificationコントローラー
+  resources :notifications, only: [:index, :destroy]
 end
