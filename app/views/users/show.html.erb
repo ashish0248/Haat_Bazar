@@ -3,35 +3,34 @@
        <div class="row">
        		<div div class="col-xs-4">
 				<div>
-		    		<% if  @user.user_maker == true %>
-		    			<h4>作り手の自己紹介</h4>
-		    		<% else %>
-		    			<h4>お店の紹介</h4>
-		    		<% end %>
 		    		<div>
-							<div>
-					            <%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %>
-							</div>
-					        <div>
-					        	<h4><%= @user.name %></h4>
-					        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
-					        </div>
-					        <div style="margin: 20px">
-					        		<%= render 'relationships/follow', user: @user %>
-					        		<% if @user == current_user %>
-					        			<%= link_to 'フォロー・フォロワー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
-					        		<% end %>
-					        </div>
-					        <div style="margin-top: 50px">
-			    				<!-- 改行なども行ってくれるhelper -->
-			    				<%= simple_format @user.introduction %>
-			    		</div>
+						<div>
+				            <%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %>
+						</div>
+				        <div>
+				        	<h4><%= @user.name %></h4>
+				        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
+				        </div>
+				        <div style="margin: 20px">
+				        		<%= render 'relationships/follow', user: @user %>
+				        		<% if @user == current_user %>
+				        			<%= link_to 'フォロー・フォロワー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
+				        		<% end %>
+				        </div>
+				        <div style="margin: 50px 0">
+		    				<!-- 改行なども行ってくれるhelper -->
+		    				<%= simple_format @user.introduction %>
+		    			</div>
+		    				<%= render 'users/map', user: @user %>
+		    			<div>
+		    				
+		    			</div>
 			    	</div>
 		    	</div>       			
        		</div>
-       		<div div class="col-xs-1">
+       		<div div class="col-xs-2">
        		</div>
-       		<div div class="col-xs-7">
+       		<div div class="col-xs-6">
 				<div>
 					<% @photos.each do |photo| %>
 						<%= attachment_image_tag(photo, :photo_image, :fill, 500, 500 ) %>

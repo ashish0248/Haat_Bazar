@@ -76,7 +76,7 @@
 
 				</thead>
 			</table>
-			<%= link_to '編集する', edit_user_path(current_user.id),class: "btn btn-primary", style: "color: white; text-decoration: none;"  %>
+			<%= link_to '編集する', edit_user_path(current_user.id),class: "btn btn-primary", style: "color: white; text-decoration: none;", data: {"turbolinks" => false} %>
 
       </div>
     </div>
