@@ -26,9 +26,16 @@ class ChatMessagesController < ApplicationController
 
 	def create
 		@chat_message = ChatMessage.new(chat_params)
-		@chat_message.user_id = current_user.id
-		@chat_message.save
+		# 通知機能用にチャットを送られる人を取得
+		@user_id = @chat_message.user_id
 
+		@chat_message.user_id = current_user.id
+
+		if @chat_message.save
+			# メッセージが送られた人に通知
+			@user = User.find(@user_id)
+      		@user.create_notification_chat!(current_user)
+		end
 		# 非同期用のパラメーター
 		room_id = @chat_message.chat_room_id
 		@chat_messages = ChatMessage.where(chat_room_id: room_id)
@@ -38,6 +45,6 @@ class ChatMessagesController < ApplicationController
 	private
 
 	def chat_params
-		params.require(:chat_message).permit(:chat_room_id, :message, :chat_image)
+		params.require(:chat_message).permit(:chat_room_id, :message, :chat_image, :user_id)
 	end
 end
