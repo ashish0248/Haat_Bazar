@@ -23,8 +23,10 @@
               <div class="dropdown" style=" margin-top: 15px">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" , style="text-decoration: none; color: black">マイページ </a>
                   <ul class="dropdown-menu">
+                      <li><%= link_to '通知', new_user_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
-                    <li><%= link_to '通知', new_user_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to 'フォロー・フォロワー一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to "チャットルーム一覧", chat_rooms_path, style:"text-decoration: none; color: black" %></li>
                     <% if current_user.user_maker == true %>
                         <li><%= link_to '屋号詳細', user_path(current_user.id) %></li>
                     <% else %>
@@ -35,7 +37,6 @@
             </li>
             <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "チャットルーム一覧", chat_rooms_path, style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: black" %></li>
 
           <!-- 非ログイン -->

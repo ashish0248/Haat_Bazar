@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   # ユーザ情報表示ページ
   def index
     @user = current_user

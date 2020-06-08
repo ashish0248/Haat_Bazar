@@ -1,0 +1,25 @@
+<div style="width: 400px;">
+				<% chat_messages.each do |chat| %>
+					<% if chat.user_id == current_user.id %>
+						<p style="text-align: right;">
+							<%=current_user.name%>からのメッセージ：
+							<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
+							<%= chat.message %>
+						</p>
+					<% else %>
+						<p style="text-align: left;">
+							<%=chat.user.name%>からのメッセージ：
+							<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
+							<%= chat.message %></p>
+					<% end %>
+				<% end %>
+			</div>
+
+			<div style="width: 400px; text-align: right;">
+				<%= form_with(model:chat_message_new,data:{remote: true}) do |f| %>
+					<%= f.attachment_field :chat_image,id: :post_img %>
+					<%= f.text_field :message %>
+					<%= f.hidden_field :chat_room_id %>
+					<%= f.submit "送信" %>
+				<% end %>
+</div>

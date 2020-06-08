@@ -1,0 +1,10 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+			<h1 id="room" data-room="<%= @chat_room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h1>
+			<div id="message">
+				<%= render "chat_messages/message", chat_messages: @chat_messages, chat_message_new: @chat_message_new  %>
+			</div>			
+      </div>
+    </div>
+</div>
