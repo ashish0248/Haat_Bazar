@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:index, :show, :create]
 
   #chat_messagesコントローラー
-  resources :chat_massages, only: [:create]
+  resources :chat_messages, only: [:show,:create]
 
   #relationshipsコントローラー
   resources :relationships, only: [:index, :create, :destroy]
