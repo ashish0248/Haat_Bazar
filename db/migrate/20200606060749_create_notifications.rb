@@ -6,7 +6,6 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.integer :chat_massage_id
       t.string :action, null: false
       t.boolean :checked, default: false, null: false
-
       t.timestamps
     end
   end
