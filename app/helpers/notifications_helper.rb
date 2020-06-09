@@ -10,6 +10,9 @@ module NotificationsHelper
 	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんがあなたをフォローしました'
 	    when 'chat'
 	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんがチャットであなたにメッセージを送りました'
+	    when 'photo'
+	    	#aタグで通知を作成したユーザーshowのリンクを作成
+	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんが写真を新たに投稿しました'
 	    end
 	end
 end

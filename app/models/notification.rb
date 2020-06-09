@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
 
   validates :visitor_id, presence: true
   validates :visited_id, presence: true
-  ACTION_VALUES = ["follow", "chat"]
+  ACTION_VALUES = ["follow", "chat", "photo"]
   validates :action,  presence: true, inclusion: {in:ACTION_VALUES}
   validates :checked, inclusion: {in: [true,false]}
 end
