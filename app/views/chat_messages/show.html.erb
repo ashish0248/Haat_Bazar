@@ -2,9 +2,12 @@
     <div class="container">
        <div class="row">
 			<h1 id="room" data-room="<%= @chat_room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h1>
-			<div id="message">
+			<div class="col-xs-3">
+				<%= attachment_image_tag(@user, :profile_image, :fill, 200, 200 ) %>
+       		</div>
+			<div id="message" class="col-xs-8">
 				<!-- @userは通知機能用 -->
-				<%= render "chat_messages/message", chat_messages: @chat_messages, chat_message_new: @chat_message_new, user: @user   %>
+				<%= render "chat_messages/message", chat_messages: @chat_messages, chat_message_new: @chat_message_new, user: @user   %>s
 			</div>
       </div>
     </div>

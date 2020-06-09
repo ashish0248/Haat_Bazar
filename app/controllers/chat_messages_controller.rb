@@ -1,5 +1,11 @@
 class ChatMessagesController < ApplicationController
+	# チャットルーム一覧
+	def index
+		#フォローしている人＝チャット可能な人
+		@users = current_user.followings
+	end
 
+	# チャットルーム
 	def show
 		@user=User.find(params[:id])
 		#current_user.chat_roomモデルのroom_idカラムの中身を全て取ってくる

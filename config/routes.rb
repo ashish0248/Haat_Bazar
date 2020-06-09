@@ -20,11 +20,8 @@ Rails.application.routes.draw do
   #photosコントローラー
   resources :photos, only: [:create, :edit, :update, :destroy]
 
-  #chat_roomsコントローラー
-  resources :chat_rooms, only: [:index, :show, :create]
-
   #chat_messagesコントローラー
-  resources :chat_messages, only: [:show,:create]
+  resources :chat_messages, only: [:index, :show,:create]
 
   #relationshipsコントローラー
   resources :relationships, only: [:index, :create, :destroy]
