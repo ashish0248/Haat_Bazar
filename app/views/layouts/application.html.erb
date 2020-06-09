@@ -25,8 +25,8 @@
                   <ul class="dropdown-menu">
                       <li><%= link_to '通知', notifications_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
-                      <li><%= link_to 'フォロー・フォロワー一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
-                      <li><%= link_to "チャットルーム一覧", chat_rooms_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
                     <% if current_user.user_maker == true %>
                         <li><%= link_to '屋号詳細', user_path(current_user.id) %></li>
                     <% else %>
@@ -53,5 +53,8 @@
 
     <%= yield %>
     <!-- フッター部分 -->
+    <footer class="hoge_footer">
+      <span style="color: black; margin:10px 40%; font-size: 15px">Copycat (C) Copycat. All Rights Reserved.</span>
+    </footer>
   </body>
 </html>

@@ -4,7 +4,13 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
-    @photo.save
+    if @photo.save
+      #フォロワー全員に通知する
+      @followed_users = current_user.followers
+      @followed_users.each do |user|
+        current_user.create_notification_photo!(user)
+      end
+    end
     redirect_to user_path(current_user.id)
   end
 

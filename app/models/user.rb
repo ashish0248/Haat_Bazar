@@ -69,4 +69,17 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  # Photo関係の通知
+  def create_notification_photo!(current_user)
+    #すでに通知が作成されているか確認
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'photo'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'photo'
+      )
+      notification.save if notification.valid?
+    end
+  end
 end

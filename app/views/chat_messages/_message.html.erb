@@ -1,16 +1,21 @@
-<div style="width: 400px;">
+<div style="width: auto">
 				<% chat_messages.each do |chat| %>
 					<% if chat.user_id == current_user.id %>
-						<p style="text-align: right;">
-							<%=current_user.name%>からのメッセージ：
-							<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
-							<%= chat.message %>
-						</p>
+						<div style="text-align: right;">
+							<span style="background-color: #87ceeb; font-size: 30px">
+								<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
+								<%= chat.message %>
+							</span>
+							<p>(<%= chat.created_at.to_s(:datetime_jp) %>)</p>
+						</div>
 					<% else %>
 						<p style="text-align: left;">
-							<%=chat.user.name%>からのメッセージ：
-							<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
+							<%=chat.user.name%>からのメッセージ <br>
+							<span style="background-color: #fdf5e6; font-size: 30px">
+								<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %>
 							<%= chat.message %></p>
+							</span>
+							<p>(<%= chat.created_at.to_s(:datetime_jp) %>)</p>
 					<% end %>
 				<% end %>
 			</div>
