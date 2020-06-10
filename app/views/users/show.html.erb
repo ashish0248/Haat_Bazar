@@ -21,7 +21,7 @@
 				        </div>
 				        <div>
 				        	<% if @user == current_user %>
-				        		<%= link_to 'フォロー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
+				        		<%= link_to 'フォロー一覧へ',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
 				        	<% end %>
 				        </div>
 				        <div style="margin: 50px 0">
@@ -32,6 +32,21 @@
 		    			<div>
 		    				<%= render 'users/map', user: @user %>
 		    			</div>
+		    			<!--　ドラッグ・ドロップ用 -->
+		    			<div>
+		    				<% if @user == current_user %>
+		    					<h4>記事の順番の入れ替え</h4>
+			    				<ul id="sortable_list">
+								  <% @photos.each do |photo| %>
+								  	<li style="margin-top: 20px">
+								  		<%= photo.introduction %><br>
+								  		<%= attachment_image_tag(photo, :photo_image, :fill, 50, 50 ) %></li>
+								  <% end %>
+								</ul>
+								<%= hidden_field_tag :user_id, @user.id %>
+							<% end %>
+		    			</div>
+
 			    	</div>
 		    	</div>       			
        		</div>

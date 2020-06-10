@@ -24,7 +24,8 @@ class User < ApplicationRecord
   #通知機能
   has_many :active_notifications, foreign_key:"visitor_id", class_name: "Notification", dependent: :destroy
   has_many :passive_notifications, foreign_key:"visited_id", class_name: "Notification", dependent: :destroy
-
+  # ドラッグ・ドロップ用
+  has_many :photos, -> { order(position: :asc) }
 
   # フォロー機能用
   def follow(other_user)

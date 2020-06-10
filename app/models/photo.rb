@@ -5,6 +5,6 @@ class Photo < ApplicationRecord
 
   #他のモデルとの関係
   belongs_to :user
-
+  acts_as_list scope: :user
 
 end
