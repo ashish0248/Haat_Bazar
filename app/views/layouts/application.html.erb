@@ -23,7 +23,13 @@
               <div class="dropdown" style=" margin-top: 15px">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" , style="text-decoration: none; color: black">マイページ </a>
                   <ul class="dropdown-menu">
-                      <li><%= link_to '通知', notifications_path, style:"text-decoration: none; color: black" %></li>
+                      <li >
+                        <% if unchecked_notifications.any? %>
+                          <%= link_to '通知あり', notifications_path, style:"text-decoration: none; color: black", style:"color: red" %>
+                        <% else %>
+                           <%= link_to '通知なし', notifications_path, style:"text-decoration: none; color: black" %>
+                        <% end %>
+                    </li>
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
