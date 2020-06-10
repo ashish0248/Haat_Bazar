@@ -39,8 +39,9 @@
 			    				<ul id="sortable_list">
 								  <% @photos.each do |photo| %>
 								  	<li style="margin-top: 20px">
-								  		<%= photo.introduction %><br>
-								  		<%= attachment_image_tag(photo, :photo_image, :fill, 50, 50 ) %></li>
+								  		<%= attachment_image_tag(photo, :photo_image, :fill, 50, 50 ) %><br>
+								  		<%= photo.introduction %>
+								  		</li>
 								  <% end %>
 								</ul>
 								<%= hidden_field_tag :user_id, @user.id %>
