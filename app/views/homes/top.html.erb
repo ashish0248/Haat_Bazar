@@ -24,10 +24,10 @@
 					        </div>
 					        <!-- フォローボタンの設置 -->
 					        <% if user_signed_in? %>
-					        	<div class="introduce" style="margin: 20px">
+					        	<div id="follow_<%= user_maker.id %>" class="introduce" style="margin: 20px">
 					        		<%= render 'relationships/follow', user: user_maker %>
 					        	</div>
-					        <% end %>
+					        <% end %>	
 					    </div>
 					    <% count = count + 1 %>
 				    <% end %>
@@ -49,8 +49,9 @@
 					        	<h4><%= user_shop.name %></h4>
 					        	<%= render 'users/tag_list', tag_list: user_shop.tag_list %>
 					        </div>
+					        <!-- フォローボタンの設置 -->
 							<% if user_signed_in? %>
-					        	<div class="introduce" style="margin: 20px">
+					        	<div  id="follow_<%= user_shop.id %>" class="introduce" style="margin: 20px">
 					        		<%= render 'relationships/follow', user: user_shop %>
 					        	</div>
 					        <% end %>					        

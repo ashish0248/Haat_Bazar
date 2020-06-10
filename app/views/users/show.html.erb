@@ -11,12 +11,17 @@
 				        	<h4><%= @user.name %></h4>
 				        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
 				        </div>
-				        <div style="margin: 20px" >
+				        <div style="margin: 20px 50px">
+				        	<% if current_user.following?(@user) || @user.following?(current_user) %>
+				        		<%= link_to "チャットルームへ",chat_message_path(@user.id),class: "btn btn-info", style:"text-decoration: none;" %>
+				        	<% end %>
+				        </div>
+				        <div id="follow_<%= @user.id %>" style="margin: 20px" >
 				        		<%= render 'relationships/follow', user: @user %>
 				        </div>
 				        <div>
 				        	<% if @user == current_user %>
-				        		<%= link_to 'フォロー・フォロワー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
+				        		<%= link_to 'フォロー一覧',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
 				        	<% end %>
 				        </div>
 				        <div style="margin: 50px 0">

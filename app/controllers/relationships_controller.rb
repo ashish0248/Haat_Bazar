@@ -13,19 +13,19 @@ before_action :set_user, except: [:index]
       # フォローされた側に通知
       @user.create_notification_follow!(current_user)
 
-      redirect_to user_path(@user.id)
     else
       redirect_back(fallback_location: root_path)
     end
+    # 非同期
   end
 
   def destroy
     @following = current_user.unfollow(@user)
     if @following.destroy
-      redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)
     end
+    # 非同期
   end
 
   private

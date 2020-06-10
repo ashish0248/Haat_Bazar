@@ -8,8 +8,6 @@
 						<tr>
 							<th>　</th>
 							<th>名前</th>
-							<th>フォロー数</th>
-							<th>フォロワー数</th>
 							<th>　</th>
 
 						</tr>
@@ -19,9 +17,7 @@
 							<tr>
 								<td><%= attachment_image_tag(following_user, :profile_image, :fill, 50, 50 ) %></td>
 								<td><%= following_user.name %></td>
-								<td><%= following_user.followings.count %></td>
-								<td><%= following_user.followers.count %></td>
-								<td><%= render 'relationships/follow', user:following_user %></td>
+								<td id="follow_<%= following_user.id %>" ><%= render 'relationships/follow', user:following_user %></td>
 							</tr>
 						<% end %>
 					</tbody>
@@ -35,8 +31,6 @@
 						<tr>
 							<th>　</th>
 							<th>名前</th>
-							<th>フォロー数</th>
-							<th>フォロワー数</th>
 							<th>　</th>
 						</tr>
 					</thead>
@@ -45,9 +39,7 @@
 							<tr>
 								<td><%= attachment_image_tag(followed_user, :profile_image, :fill, 50, 50 ) %></td>
 								<td><%= followed_user.name %></td>
-								<td><%= followed_user.followings.count %></td>
-								<td><%= followed_user.followers.count %></td>
-								<td><%= render 'relationships/follow', user:followed_user %></td>
+								<td id="follow_<%= followed_user.id %>"><%= render 'relationships/follow', user:followed_user %></td>
 							</tr>
 						<% end %>
 					</tbody>
