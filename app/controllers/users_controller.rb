@@ -15,6 +15,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @photos = Photo.where(user_id: @user.id)
     @photo_new = Photo.new
+
+    # ドラッグ・ドロップ用
+    @photos = @user.photos
+  end
+  
+  # ドラッグ・ドロップ用
+  def sort
+    @user = User.find(current_user.id)
+    @photos = Photo.where(user_id: @user.id)
+    from = params[:from].to_i + 1
+    photo = @photos.find_by(position: from.to_s)
+    photo.insert_at(params[:to].to_i + 1)
+    head :ok
   end
 
   #ユーザ情報編集ページ

@@ -20,3 +20,15 @@ $ ->
                   "#address_street"          : "%6%7" # 大口事務所の番地と名称が入力される
                 }
   })
+
+$ ->
+  el = document.getElementById("sortable_list")
+  if el != null
+    sortable = Sortable.create(el,
+      delay: 0,
+      onUpdate: (evt) ->
+        $.ajax
+          url:  $("#parent_id").val() + '/sort'
+          type: 'patch'
+          data: { from: evt.oldIndex, to: evt.newIndex }
+    )

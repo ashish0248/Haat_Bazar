@@ -27,17 +27,17 @@
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
-                    <% if current_user.user_maker == true %>
-                        <li><%= link_to '屋号詳細', user_path(current_user.id) %></li>
-                    <% else %>
-                        <li><%= link_to '店舗詳細', user_path(current_user.id) %></li>
-                    <% end %>
+                      <% if current_user.user_maker == true %>
+                          <li><%= link_to '屋号詳細', user_path(current_user.id) %></li>
+                      <% else %>
+                          <li><%= link_to '店舗詳細', user_path(current_user.id) %></li>
+                      <% end %>
+                      <li><%= link_to "お問い合わせ", new_contact_path, style:"text-decoration: none; color: black" %></li>
                   </ul>
                </div>
             </li>
             <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "お問い合わせフォーム", new_contact_path, style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: black" %></li>
 
           <!-- 非ログイン -->

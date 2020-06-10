@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   #usersコントローラー
   resources :users
   get 'users/leave'
+  patch 'users/:id/sort', to: 'users#sort',  as: 'user_sort'
+
 
   #photosコントローラー
   resources :photos, only: [:create, :edit, :update, :destroy]

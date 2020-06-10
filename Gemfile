@@ -81,4 +81,7 @@ gem 'jquery-rails'
 # 環境変数
 gem 'dotenv-rails'
 
+# ドラッグアンドドロップ用
+gem 'acts_as_list'
+
 

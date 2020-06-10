@@ -8,6 +8,7 @@
 		       				<tr>
 		       					<th></th>
 		       					<th>名前</th>
+		       					<th>フォロー</th>
 		       					<th>メールアドレス</th>
 		       					<th>住所</th>
 		       					<th></th>
@@ -21,7 +22,17 @@
 					       				<%= attachment_image_tag(user, :profile_image, :fill, 100, 100 ) %>
 					       			<% end %>
 	       						</td>
-	       						<td><%= user.name %></td>
+	       						<td><%= user.name %><br>
+									<% if  user.user_maker == true%>
+										作り手
+									<% else %>	
+										お店
+									<% end %>
+								</td>
+	       						</td>
+	       						<td id="follow_<%= user.id %>">
+				        			<%= render 'relationships/follow', user: user %>
+				        		</td>
 	       						<td><%= user.email %></td>
 	       						<td><%= user.address %></td>
 	       						<td><%= link_to "チャットルームへ",chat_message_path(user.id),class: "btn btn-info", style:"text-decoration: none;" %></td>
