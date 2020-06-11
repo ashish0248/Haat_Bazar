@@ -7,6 +7,7 @@
        		</div>
 			<div id="message" class="col-xs-8">
 				<!-- @userは通知機能用 -->
+				<%= link_to 'さらに10件表示', chat_message_path(@user.id, count: @count), style: "font-size: 20px; margin-left: 300px" %>
 				<%= render "chat_messages/message", chat_messages: @chat_messages, chat_message_new: @chat_message_new, user: @user %>
 			</div>
       </div>

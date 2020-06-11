@@ -35,8 +35,9 @@ class User < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
+  validates :profile_image, presence: true
   validates :user_status, presence: true
-
+ 
   # フォロー機能用
   def follow(other_user)
     # 同一事物ではないか？
