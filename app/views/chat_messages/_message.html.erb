@@ -23,7 +23,7 @@
 			<div style="width: 400px; text-align: right;">
 				<%= form_with(model:chat_message_new,data:{remote: true}) do |f| %>
 					<%= f.attachment_field :chat_image,id: :post_img %>
-					<%= f.text_field :message %>
+					<%= f.text_field :message, placeholder:"メッセージか画像を送信してください" %>
 					<%= f.hidden_field :chat_room_id %>
 					<%= f.hidden_field :user_id, :value => user.id %>
 					<%= f.submit "送信" %>

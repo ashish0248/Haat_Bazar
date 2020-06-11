@@ -3,6 +3,8 @@ class ChatMessagesController < ApplicationController
 	def index
 		#フォローしている人＝チャット可能な人
 		@users = current_user.followings
+
+		@not_users = current_user.followers
 	end
 
 	# チャットルーム
@@ -41,6 +43,8 @@ class ChatMessagesController < ApplicationController
 			# メッセージが送られた人に通知
 			@user = User.find(@user_id)
       		@user.create_notification_chat!(current_user)
+      	else
+      		redirect_back(fallback_location: root_path)
 		end
 		# 非同期用のパラメーター
 		room_id = @chat_message.chat_room_id

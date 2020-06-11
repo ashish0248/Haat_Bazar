@@ -34,9 +34,9 @@
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
                       <% if current_user.user_maker == true %>
-                          <li><%= link_to '屋号詳細', user_path(current_user.id), data: {"turbolinks" => false} %></li>
+                          <li><%= link_to '屋号詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
                       <% else %>
-                          <li><%= link_to '店舗詳細', user_path(current_user.id), data: {"turbolinks" => false} %></li>
+                          <li><%= link_to '店舗詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
                       <% end %>
                       <li><%= link_to "お問い合わせ", new_contact_path, style:"text-decoration: none; color: black" %></li>
                   </ul>
