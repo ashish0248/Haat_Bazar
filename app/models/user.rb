@@ -28,7 +28,6 @@ class User < ApplicationRecord
   has_many :photos, -> { order(position: :asc) }
 
   ## バリデーション
-  validates :user_maker, presence: true
   validates :name, presence: true
   validates :staff, presence: true
   validates :introduction, presence: true

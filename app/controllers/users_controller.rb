@@ -39,18 +39,33 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
-    @user.update(user_params)
-    redirect_to  users_path
+  @user = User.find(params[:id])
+  #退会用の記述
+   if params[:user][:user_status] == "false" #退会用の記述
+     @user.user_status = false
+     @user.update(user_params)
+     reset_session #ログアウト
+     redirect_to root_path
+     
+   else
+      #会員登録情報の編集用記述
+         if @user.update(user_params)
+            redirect_to user_path(@user.id)
+         else 
+          render 'edit'
+       end
+     end
   end
+  
    #ユーザ退会ページ
   def leave
+    @user = User.find(current_user.id)
   end
 
   private
 
   def user_params
-    params.require(:user).permit ([:user_maker, :name, :staff, :introduction, :postal_code, :address, :phone_number, :profile_image, :tag_list])
+    params.require(:user).permit ([:user_maker, :name, :staff, :introduction, :postal_code, :address, :phone_number, :profile_image, :tag_list, :user_status])
   end
 
 end
