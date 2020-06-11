@@ -6,7 +6,7 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: "User", optional: true
   belongs_to :chat_message, optional: true
 
-
+  # バリデーション
   validates :visitor_id, presence: true
   validates :visited_id, presence: true
   ACTION_VALUES = ["follow", "chat", "photo"]

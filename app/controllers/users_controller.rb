@@ -22,11 +22,14 @@ class UsersController < ApplicationController
   
   # ドラッグ・ドロップ用
   def sort
-    @user = User.find(current_user.id)
+    # userの特定
+    @user = User.find(params[:id])
+    # 特定したuserのphotoを全て取得
     @photos = Photo.where(user_id: @user.id)
-    from = params[:from].to_i + 1
-    photo = @photos.find_by(position: from.to_s)
-    photo.insert_at(params[:to].to_i + 1)
+    #fromの値から動かしたphotoの特定
+    photo = @photos.find_by(position: params[:from])
+    #特定したphotoの順番をtoで取得、挿入
+    photo.insert_at(params[:to].to_i)
     head :ok
   end
 

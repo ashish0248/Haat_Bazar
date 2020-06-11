@@ -3,6 +3,8 @@ class ChatMessagesController < ApplicationController
 	def index
 		#フォローしている人＝チャット可能な人
 		@users = current_user.followings
+
+		@not_users = current_user.followers
 	end
 
 	# チャットルーム
@@ -24,7 +26,16 @@ class ChatMessagesController < ApplicationController
 	  		ChatEntrance.create(user_id: @user.id, chat_room_id: @chat_room.id)
 	  	end
 	  	#すでにあるメッセージの取得
-	  	@chat_messages = ChatMessage.where(chat_room_id: @chat_room.id)
+	  	# 10件ずつ増やす
+	  	if params[:count]
+	  		@count = params[:count]
+	  		@count = @count.to_i + 10
+	  		@chat_messages = ChatMessage.where(chat_room_id: @chat_room.id).last(@count)
+	  	else
+	  		# 最初は10件表示
+	  		@count = 10
+	  		@chat_messages = ChatMessage.where(chat_room_id: @chat_room.id).last(@count)
+	  	end
 
 	  	#投稿用
 	  	@chat_message_new = ChatMessage.new(chat_room_id: @chat_room.id)
@@ -41,6 +52,8 @@ class ChatMessagesController < ApplicationController
 			# メッセージが送られた人に通知
 			@user = User.find(@user_id)
       		@user.create_notification_chat!(current_user)
+      	else
+      		redirect_back(fallback_location: root_path)
 		end
 		# 非同期用のパラメーター
 		room_id = @chat_message.chat_room_id

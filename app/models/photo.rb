@@ -7,4 +7,6 @@ class Photo < ApplicationRecord
   belongs_to :user
   acts_as_list scope: :user
 
+  #バリデーション
+  validates :photo_image, presence: true
 end

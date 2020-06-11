@@ -35,11 +35,12 @@
 		    			<!--　ドラッグ・ドロップ用 -->
 		    			<div>
 		    				<% if @user == current_user %>
-		    					<h4>記事の順番の入れ替え</h4>
+		    					<h4>記事の順番(ドラッグ・ドロップ)</h4>
+		    					<%= link_to '更新', user_path(@user.id), style:"text-decoration: color: black; background-color: #f7f7f8; border: solid 1px;  padding: 2px 5px; border-radius: 8px;", data: {"turbolinks" => false}  %>
 			    				<ul id="sortable_list">
 								  <% @photos.each do |photo| %>
 								  	<li style="margin-top: 20px">
-								  		<%= attachment_image_tag(photo, :photo_image, :fill, 50, 50 ) %><br>
+								  		<%= attachment_image_tag(photo, :photo_image, :fill, 50, 50 ) %>
 								  		<%= photo.introduction %>
 								  		</li>
 								  <% end %>

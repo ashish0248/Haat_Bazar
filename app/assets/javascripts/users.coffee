@@ -28,7 +28,7 @@ $ ->
       delay: 0,
       onUpdate: (evt) ->
         $.ajax
-          url:  $("#parent_id").val() + '/sort'
+          url:  $("#user_id").val() + '/sort'
           type: 'patch'
-          data: { from: evt.oldIndex, to: evt.newIndex }
+          data: { from: (evt.oldIndex + 1), to: (evt.newIndex + 1 )}
     )
