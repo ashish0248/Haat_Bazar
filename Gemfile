@@ -84,4 +84,9 @@ gem 'dotenv-rails'
 # ドラッグアンドドロップ用
 gem 'acts_as_list'
 
+#デプロイ用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
