@@ -19,7 +19,8 @@
 
 				<%= form_for(@user, url: user_path(current_user.id)) do |f| %>
 				  <%= f.hidden_field :user_status, :value => false %>
-				  <%= f.submit '退会する', class: "btn btn-danger",data: {"turbolinks" => false}, data: {confirm: "退会しますか？"} %><!-- confirmは最後にもってくる -->
+				  <%= f.submit '退会する', class: "btn btn-danger",data: {"turbolinks" => false} %>
+				  <!-- confirmは最後にもってくる -->
 				<% end %>
 
 			</div>

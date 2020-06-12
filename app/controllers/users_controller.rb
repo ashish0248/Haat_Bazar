@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   #退会用の記述
    if params[:user][:user_status] == "false" #退会用の記述
      @user.user_status = false
-     @user.update(user_params)
+     @user.save
      reset_session #ログアウト
      redirect_to root_path
      
