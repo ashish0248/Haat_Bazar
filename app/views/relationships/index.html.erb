@@ -15,7 +15,13 @@
 					<tbody>
 						<% @following_users.each do |following_user| %>
 							<tr>
-								<td><%= attachment_image_tag(following_user, :profile_image, :fill, 50, 50 ) %></td>
+
+								<td>
+									<%= link_to user_path(following_user.id) do %>
+										<%= attachment_image_tag(following_user, :profile_image, :fill, 50, 50 ) %>
+										
+									<% end %>
+									</td>
 								<td><%= following_user.name %><br>
 									<% if  following_user.user_maker == true%>
 										作り手

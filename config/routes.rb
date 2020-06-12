@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   #usersコントローラー
-  resources :users
   get 'users/leave'
+  resources :users
   patch 'users/:id/sort', to: 'users#sort',  as: 'user_sort'
 
 

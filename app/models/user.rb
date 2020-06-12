@@ -28,7 +28,6 @@ class User < ApplicationRecord
   has_many :photos, -> { order(position: :asc) }
 
   ## バリデーション
-  validates :user_maker, presence: true
   validates :name, presence: true
   validates :staff, presence: true
   validates :introduction, presence: true
@@ -36,7 +35,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :profile_image, presence: true
-  validates :user_status, presence: true
  
   # フォロー機能用
   def follow(other_user)
