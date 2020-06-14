@@ -35,6 +35,11 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :profile_image, presence: true
+
+ #退会済みユーザーかどうか
+   def active_for_authentication?
+    super && (self.user_status == true)
+   end
  
   # フォロー機能用
   def follow(other_user)

@@ -12,6 +12,7 @@
 				        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
 				        </div>
 				        <div style="margin: 20px 50px">
+				        	<!-- フォローしているorされている -->
 				        	<% if current_user.following?(@user) || @user.following?(current_user) %>
 				        		<%= link_to "チャットルームへ",chat_message_path(@user.id),class: "btn btn-info", style:"text-decoration: none;" %>
 				        	<% end %>
@@ -67,6 +68,7 @@
 					<% end %>
 		    	</div>
 		    	<% if @user == current_user %>
+		    		<%= render "devise/shared/error_messages", resource: @photo_new %>
 		    		<%= form_for @photo_new, url: photos_path do |f| %>
 
 		    			<%= f.attachment_field :photo_image,id: :post_img %>
