@@ -5,8 +5,22 @@
     		<h2>Haat Bazar</h2>
     	</div>
 
+    	<!-- キーワード検索 -->
+    	<div>
+    		<% if user_signed_in? %>
+				<div class="text-right" style="margin-right: 20px; padding-bottom: 5px">
+		            <%= form_tag(homes_path, method: "get") do %>
+		              	<%= text_field_tag :keyword,  params[:keyword], placeholder:"検索ワードを入れてください"%>
+		                <%= submit_tag 'Search' %>
+		            <% end %>
+		        </div>
+    		<% end %>
+    	</div>
+
     	<% if params[:tag_name] %>
     		<h3>『<%= params[:tag_name] %>』タグの検索結果</h3>
+    	<% elsif params[:keyword] %>
+    		『<%= params[:keyword] %>』の検索結果
     	<% end %>
     	<div class="row">
 	    	<div  class="clearfix">

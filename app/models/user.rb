@@ -97,4 +97,9 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  # 検索用
+  def self.search(keyword)
+    where(['name LIKE ? OR introduction LIKE ? OR address LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+ end
 end

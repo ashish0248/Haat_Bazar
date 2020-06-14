@@ -13,6 +13,11 @@ class HomesController < ApplicationController
       @user_makers = @users.where(user_maker: true)
       @user_shops = @users.where(user_maker: false)
     end
+    if @keyword = params[:keyword]
+      @searched_users = User.search(params[:keyword])
+      @user_makers = @searched_users.where(user_maker: true)
+      @user_shops  = @searched_users.where(user_maker: false)
+    end
   end
 
   def about
