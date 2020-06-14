@@ -50,7 +50,7 @@ class UsersController < ApplicationController
    else
       #会員登録情報の編集用記述
          if @user.update(user_params)
-            redirect_to user_path(@user.id)
+            redirect_to users_path
          else 
           render 'edit'
        end
