@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #homesコントローラー
-  resources :homes, only: [:new, :index]
+  resources :homes, only: [:new, :index, :create]
   get '/' => 'homes#top', as: 'root'
   get 'homes/search'
   get 'homes/about'
@@ -30,7 +30,5 @@ Rails.application.routes.draw do
 
   #notificationコントローラー
   resources :notifications, only: [:index, :destroy]
-
-  #contactsコントローラー
-  resources :contacts, only: [:new, :create]
+  
 end

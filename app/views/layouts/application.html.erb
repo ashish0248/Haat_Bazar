@@ -38,7 +38,7 @@
                       <% else %>
                           <li><%= link_to '店舗詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
                       <% end %>
-                      <li><%= link_to "お問い合わせ", new_contact_path, style:"text-decoration: none; color: black" %></li>
+                       <li><%= link_to "お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></li>
                   </ul>
                </div>
             </li>
@@ -50,8 +50,10 @@
           <% else %>
             <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "新規登録",  new_home_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></li>
+            <li><%= link_to "新規登録",  root_path(anchor: 'user_new'), style:"text-decoration: none; color: black" %></li>
             <li><%= link_to "ログイン", new_user_session_path, style:"text-decoration: none; color: black" %></li>
+
           <% end %>
         </ul>
       </nav>

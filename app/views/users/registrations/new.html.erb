@@ -75,6 +75,21 @@
             </div>
 
             <div class="field">
+                <%= f.label :インスタグラム（URL）%>
+                <%= f.text_field :instagram, autofocus: true %>
+            </div>
+
+            <div class="field">
+                <%= f.label :フェイスブック（URL）%>
+                <%= f.text_field :facebook, autofocus: true %>
+            </div>
+
+            <div class="field">
+                <%= f.label :ホームページ（URL）%>
+                <%= f.text_field :homepage, autofocus: true %>
+            </div>
+
+            <div class="field">
               <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>

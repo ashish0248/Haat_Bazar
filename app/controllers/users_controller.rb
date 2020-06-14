@@ -50,7 +50,7 @@ class UsersController < ApplicationController
    else
       #会員登録情報の編集用記述
          if @user.update(user_params)
-            redirect_to user_path(@user.id)
+            redirect_to users_path
          else 
           render 'edit'
        end
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit ([:user_maker, :name, :staff, :introduction, :postal_code, :address, :phone_number, :profile_image, :tag_list, :user_status])
+    params.require(:user).permit ([:user_maker, :name, :staff, :introduction, :postal_code, :address, :phone_number, :profile_image, :tag_list, :user_status, :instagram, :facebook, :homepage])
   end
 
 end

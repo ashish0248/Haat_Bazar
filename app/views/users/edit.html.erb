@@ -68,7 +68,18 @@
                 <%= f.label :電話番号（ハイフンなし） %>
                 <%= f.text_field :phone_number, autofocus: true %>
             </div>
-
+            <div class="field">
+                <%= f.label :Instagram（url） %>
+                <%= f.text_field :instagram, autofocus: true %>
+            </div>
+            <div class="field">
+                <%= f.label :Facebook（url） %>
+                <%= f.text_field :facebook, autofocus: true %>
+            </div>
+            <div class="field">
+                <%= f.label :Homepage（url）%>
+                <%= f.text_field :homepage, autofocus: true %>
+            </div>            
             <div class="actions">
               <%= f.submit "更新する" %>
             </div>
