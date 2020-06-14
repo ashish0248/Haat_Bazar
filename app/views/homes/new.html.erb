@@ -1,27 +1,20 @@
+
+<!-- お問い合わせフォーム -->
 <div class="body">
     <div class="container">
-       <div class="row">
-       	
-        <div class="registration-image" style="padding-top: : 150px;">
-          <!-- 作り手側 -->
-           	<div class="col-xs-6">
-           		<!-- そのまま新規登録画面へ -->
-              <div style="font-size: 30px; margin: 80px; background-color: rgba( 0, 0, 0, 0.5);">
-                <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-                <p style="font-size: 20px; color: white; margin: 20px;">・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
-              </div>
-           	</div>
-           	<!-- お店側 -->
-           	<div class="col-xs-6"> 
-           		<!-- user_makerをfalseにする -->
-              <div style="font-size: 30px; margin: 280px 60px; background-color: rgba(255,255,255,0.8);">
-                <p style="font-size: 20px;">・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
-              <%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
-              </div>
-           	</div>
-
+      <div class="row">
+        <h3>お問い合わせ</h3>
+        <div>
+          <%= form_for(@contact_new, url: homes_path) do |f| %>
+            <%= f.label :お名前 %>
+            <%= f.text_field :name %><br>
+            <%= f.label :Eメールアドレス %>
+            <%= f.text_field :email %><br>
+            <%= f.label :お問い合わせ内容 %>
+            <%= f.text_area :message %>
+            <%= f.submit '送信' %>
+            <% end %>
         </div>
-
-       </div>
+      </div>
     </div>
 </div>

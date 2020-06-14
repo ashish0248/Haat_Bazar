@@ -11,6 +11,11 @@
 				        	<h4><%= @user.name %></h4>
 				        	<%= render 'users/tag_list', tag_list: @user.tag_list %>
 				        </div>
+
+						<!-- SNSリンク -->
+						<div style="margin: 20px">
+				        	<%= render 'users/link', user: @user %>
+				        </div>
 				        <div style="margin: 20px 50px">
 				        	<!-- フォローしているorされている -->
 				        	<% if current_user.following?(@user) || @user.following?(current_user) %>
@@ -34,9 +39,9 @@
 		    				<%= render 'users/map', user: @user %>
 		    			</div>
 		    			<!--　ドラッグ・ドロップ用 -->
-		    			<div>
+		    			<div style="margin: 50px 0">
 		    				<% if @user == current_user %>
-		    					<h4>記事の順番(ドラッグ・ドロップ)</h4>
+		    					<h4>ドラッグで並び替え</h4>
 		    					<%= link_to '更新', user_path(@user.id), style:"text-decoration: color: black; background-color: #f7f7f8; border: solid 1px;  padding: 2px 5px; border-radius: 8px;", data: {"turbolinks" => false}  %>
 			    				<ul id="sortable_list">
 								  <% @photos.each do |photo| %>
@@ -71,9 +76,9 @@
 		    		<%= render "devise/shared/error_messages", resource: @photo_new %>
 		    		<%= form_for @photo_new, url: photos_path do |f| %>
 
-		    			<%= f.attachment_field :photo_image,id: :post_img %>
+		    			<%= f.text_area :introduction, placeholder:"作品名・アピールポイントなど" %>
 
-		    			<%= f.text_area :introduction %>
+		    			<%= f.attachment_field :photo_image,id: :post_img %>
 
 						<%= f.submit "追加する" %>
 		    		<% end %>

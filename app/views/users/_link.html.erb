@@ -1,0 +1,17 @@
+<% if user.homepage.present? %>
+	<%= link_to user.homepage, style:"text-decoration: none; color: black" do %>
+		<%= image_tag 'homepage_image.png', :size =>'20x20' %>
+	<% end %>
+<% end %>
+
+<% if user.instagram.present? %>
+	<%= link_to user.instagram, style:"text-decoration: none; color: black" do %>
+    	<%= image_tag 'instagram_image.jpeg', :size =>'20x20' %>
+	<% end %>
+<% end %>
+
+<% if user.facebook.present? %>
+	<%= link_to user.facebook, style:"text-decoration: none; color: black" do %>
+		<%= image_tag 'facebook_image.jpg', :size =>'20x20' %>
+	<% end %>
+<% end %>

@@ -73,7 +73,33 @@
 			                <th>電話番号</th>
 			                <td><%= @user.phone_number %></td>
 						</tr>
-
+						<tr>
+			                <th>Instagram</th>
+			                <td>
+			                	<%= link_to @user.instagram, style:"text-decoration: none; color: black" do %>
+								    <%= image_tag 'instagram_image.jpeg', :size =>'50x50' %>
+								<% end %>			                	
+			                	<%= @user.instagram %>
+							</td>
+						</tr>
+						<tr>
+			                <th>FaceBook</th>
+			                <td >
+								<%= link_to @user.facebook, style:"text-decoration: none; color: black" do %>
+									<%= image_tag 'facebook_image.jpg', :size =>'50x50' %>
+								<% end %>		 
+								<%= @user.facebook %>               	
+			                </td>
+						</tr>
+						<tr>
+							<th>Homepage</th>
+			                <td>
+								<%= link_to @user.homepage, style:"text-decoration: none; color: black" do %>
+									<%= image_tag 'homepage_image.png', :size =>'50x50' %>
+								<% end %>
+								<%= @user.homepage %>
+			                </td>
+						</tr>
 				</thead>
 			</table>
 			<%= link_to '編集する', edit_user_path(current_user.id),class: "btn btn-primary", style: "color: white; text-decoration: none;", data: {"turbolinks" => false} %>
