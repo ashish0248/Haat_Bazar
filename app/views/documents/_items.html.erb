@@ -9,7 +9,7 @@
     <%= f.text_field :unit %><br>
     <%= f.label :単価 %>
     <%= f.text_field :price %><br>
-    <%= f.submit '追加' %>
+    <%= f.submit '商品の追加' %>
   <% end %>
 </div>
 
@@ -28,7 +28,10 @@
       <% sum = 0 %>
         <% items.each do |item| %>
           <tr>
-            <td style="text-align:right;"><%= link_to '削除', item_path(item.id), data: { confirm: '削除しますか?' }, method: :delete, remote: true %></td>
+            <td style="text-align:right;">
+              <%= link_to '編集',  edit_item_path(item.id) %>
+              <%= link_to '削除', item_path(item.id), data: { confirm: '削除しますか?' }, method: :delete, remote: true %>
+            </td>
             <td><%= item.name %></td>
             <td style="text-align:right;"><%= item.number %></td>
             <td><%= item.unit %></td>

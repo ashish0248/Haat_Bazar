@@ -35,6 +35,6 @@ Rails.application.routes.draw do
   resources :documents
 
   #itemsコントローラー
-  resources :items, only: [:create, :destroy]
+  resources :items, only: [:edit, :create, :update, :destroy]
 
 end

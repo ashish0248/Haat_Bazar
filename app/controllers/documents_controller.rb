@@ -1,6 +1,8 @@
 class DocumentsController < ApplicationController
-  def index
 
+  def index
+    # 自分の制作した書類の新しい順
+    @documents = Document.where(maker_id: current_user.id).order(created_at: :desc)
   end
 
   def new

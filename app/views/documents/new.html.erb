@@ -4,19 +4,23 @@
        		<%= form_for(@document_new, url: documents_path ) do |f| %>
        		<!-- 書類の種類の選択 -->
     		<div>
-    			<%= f.radio_button :document_status, :'1', checked: true %>
-        					<span>見積書の作成</span><br>
-    			<%= f.radio_button :document_status, :'2' %>
-        					<span>発注書の作成</span><br>
-        		<%= f.radio_button :document_status, :'3' %>
-        					<span>納品書の作成</span><br>
-        		<%= f.radio_button :document_status, :'1' %>
-        					<span>請求書の作成</span><br>
+                <!-- 発注書が作れるのはお店のみ -->
+                <% if current_user.user_maker == true %>
+        			<%= f.radio_button :document_status, :'1', checked: true %>
+            					<span>見積書の作成</span><br>
+            		<%= f.radio_button :document_status, :'3' %>
+            					<span>納品書の作成</span><br>
+            		<%= f.radio_button :document_status, :'4' %>
+            					<span>請求書の作成</span><br>
+                <% else %>
+                    <%= f.radio_button :document_status, :'2' %>
+                                <span>発注書の作成</span><br>
+                <% end %>
     		</div>
 
     		<div>
-    			<%= f.label :フォローしているユーザー %>
-    			    <%= f.collection_select :receiver_id, @following_users.all, :id, :name %>
+    			<%= f.label :フォローしているユーザーから選択 %><br>
+    			<%= f.collection_select :receiver_id, @following_users.all, :id, :name %>
 
     		</div>
 

@@ -38,7 +38,7 @@
                       <% else %>
                           <li><%= link_to '店舗詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
                       <% end %>
-                      <li><%= link_to "書類作成",  new_document_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to "書類一覧",  documents_path, style:"text-decoration: none; color: black" %></li>
                        <li><%= link_to "お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></li>
                   </ul>
                </div>
