@@ -1,0 +1,35 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+       		<%= form_for(@document_new, url: documents_path ) do |f| %>
+       		<!-- 書類の種類の選択 -->
+    		<div>
+    			<%= f.radio_button :document_status, :'1', checked: true %>
+        					<span>見積書の作成</span><br>
+    			<%= f.radio_button :document_status, :'2' %>
+        					<span>発注書の作成</span><br>
+        		<%= f.radio_button :document_status, :'3' %>
+        					<span>納品書の作成</span><br>
+        		<%= f.radio_button :document_status, :'1' %>
+        					<span>請求書の作成</span><br>
+    		</div>
+
+    		<div>
+    			<%= f.label :フォローしているユーザー %>
+    			    			<%= f.collection_select :receiver_id, @following_users.all, :id, :name %>
+
+    		</div>
+
+    		<%= f.submit "書類作成画面へ進む", class: "btn btn-primary", :style=> "margin-left: 200px;" %>
+
+    		<% end %>
+
+
+
+
+
+
+
+      </div>
+    </div>
+</div>

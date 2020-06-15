@@ -30,5 +30,11 @@ Rails.application.routes.draw do
 
   #notificationコントローラー
   resources :notifications, only: [:index, :destroy]
-  
+
+  #documentsコントローラー
+  resources :documents
+
+  #itemsコントローラー
+  resources :items, only: [:create, :destroy]
+
 end
