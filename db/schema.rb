@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_114248) do
+ActiveRecord::Schema.define(version: 2020_06_15_084316) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -63,6 +63,39 @@ ActiveRecord::Schema.define(version: 2020_06_14_114248) do
     t.string "name"
     t.string "email"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "document_status"
+    t.integer "maker_id"
+    t.integer "receiver_id"
+    t.string "maker_name"
+    t.string "maker_postal_code"
+    t.string "maker_address"
+    t.string "maker_staff"
+    t.string "maker_phone_number"
+    t.string "receiver_name"
+    t.string "receiver_postal_code"
+    t.string "receiver_address"
+    t.string "receiver_staff"
+    t.string "receiver_phone_number"
+    t.string "effective_date"
+    t.string "expiration_date"
+    t.string "postage"
+    t.string "receipt_number"
+    t.string "payee"
+    t.text "remark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "document_id"
+    t.string "name"
+    t.string "price"
+    t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
