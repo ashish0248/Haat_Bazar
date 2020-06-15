@@ -39,12 +39,20 @@ class DocumentsController < ApplicationController
   def edit
   	@document = Document.find(params[:id])
 
+  	@items = Item.where(document_id: @document.id)
+  	@item_new = Item.new(document_id: @document.id)
+
   end
 
   def update
+  	@document = Document.find(params[:id])
+  	@document.update(document_params)
+  	redirect_to document_path(@document.id)
   end
 
   def show
+  	@document = Document.find(params[:id])
+  	@items = Item.where(document_id: @document.id)
   end
 
   private

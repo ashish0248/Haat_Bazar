@@ -16,7 +16,7 @@
 
     		<div>
     			<%= f.label :フォローしているユーザー %>
-    			    			<%= f.collection_select :receiver_id, @following_users.all, :id, :name %>
+    			    <%= f.collection_select :receiver_id, @following_users.all, :id, :name %>
 
     		</div>
 

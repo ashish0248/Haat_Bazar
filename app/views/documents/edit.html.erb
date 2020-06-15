@@ -13,8 +13,7 @@
       		<span>請求書</span>
       	<% end %>
       </h1>
-
-      <%= form_for(@document) do |f| %>
+      <%= form_for(@document, url: document_path(@document.id), html: { id: :edit_document}) do |f| %>
 	      <div class="row">
 	        <div class="col-md-7 col-xs-7">
 	          <h2><%= f.text_field :receiver_name %>　様</h2>
@@ -43,67 +42,26 @@
 	      <div style="margin-top:2em;"></div>
 	      <div class="row">
 	        <div class="col-md-8 col-xs-8">
-	          <big>下記のとおり
-	          	<span>
-	          		<% if @document.document_status == '1' %>
-			      		<span>御見積</span>
-			      	<% elsif @document.document_status == '2' %>
-			      		<span>発注</span>
-			      	<% end %>
-			      	<% if @document.document_status == '3' %>
-			      		<span>御納品</span>
-			      	<% elsif @document.document_status == '4' %>
-			      		<span>御請求</span>
-			      	<% end %>
-	          	</span>申し上げます。</big>
-	        </div>
-	        <div class="col-md-4 col-xs-4" style="text-align:right;">
-	          単位: 円
 	        </div>
 	      </div>
 
-	      <table class="table">
-	        <thead>
-	          <tr>
-	            <th style="width:4em;text-align:right;">項番</th><th>品名</th><th style="width:4em;text-align:right;">数量</th><th style="width:4em;">単位</th><th style="text-align:right;">単価</th><th style="text-align:right;">金額</th>
-	          </tr>
-	        </thead>
-	        <tbody>
-	          <tr class="row-template">
-	            <td style="text-align:right;">N</td>
-	            <td>PRODUCT NAME</td>
-	            <td style="text-align:right;">NN</td>
-	            <td>人日</td>
-	            <td style="text-align:right;">XX,000</td>
-	            <td style="text-align:right;">XX,000</td>
-	          </tr>
-	          <tr>
-	            <td colspan="3" rowspan="3">
-	            	<% if @document.document_status == '1' %>
-	            		<h4>振込先</h4>
-	            			<%= f.text_area :payee %>
-	            	<% end %>
-	            </td>
-	            	<td colspan="2">小計</td>
-	            	<td style="text-align:right;">XX,000</td>
-	          </tr>
-	          <tr>
-	            <td colspan="2">消費税(<span class="tax-rate">10</span>%)</td>
-	            <td style="text-align:right;">XX,000</td>
-	          </tr>
-	          <tr>
-	            <td colspan="2">合計</td>
-	            <td style="text-align:right;">
-	            	<big><strong><span>XX,000</span></strong></big>
-	          	</td>
-	          </tr>
-	        </tbody>
-	      </table>
 	      <div>
+	        <% if @document.document_status == '4' %>
+	            <h4>振込先</h4>
+	            	<%= f.text_area :payee %>
+	        <% end %>
 	      	<h4>備考</h4>
 	           <%= f.text_area :remark %>
 	      </div>
+	      
       <% end %>
+
+      <div id="item">
+	  	<%= render 'documents/items', items: @items, item_new: @item_new %>
+	  </div>
+
+	     <!-- javaでsubmitを行う -->
+	    <input type="button" id="b1" value="書類を作成する" onclick="test1()">
 
     </div>
 </body>
