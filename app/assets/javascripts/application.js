@@ -17,3 +17,10 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery.jpostal
+
+function test1(){
+	console.log("test1"); //test1と表示される
+	var target = document.getElementById("edit_document");
+    target.submit();
+}
+

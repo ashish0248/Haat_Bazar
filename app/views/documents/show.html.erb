@@ -1,0 +1,113 @@
+<body>
+    <div class="container">
+      <h1 style="text-align:center;">
+      	<!-- 書類の種類の判定 -->
+      	<% if @document.document_status == '1' %>
+      		<span>見積書</span>
+      	<% elsif @document.document_status == '2' %>
+      		<span>発注書</span>
+      	<% end %>
+      	<% if @document.document_status == '3' %>
+      		<span>納品書</span>
+      	<% elsif @document.document_status == '4' %>
+      		<span>請求書</span>
+      	<% end %>
+      </h1>
+	      <div class="row">
+	        <div class="col-md-7 col-xs-7">
+	          <h2><%= @document.receiver_name %>　様</h2>
+	          〒 <span><%= @document.receiver_postal_code.insert(3, "-") %></span><br>
+	          <span><%= @document.receiver_address %></span><br>
+	          TEL:<span><%= @document.receiver_phone_number %></span><br>
+	          担当者:<span><%= @document.receiver_staff %></span>
+	        </div>
+	        <div class="col-md-5 col-xs-5" style="text-align:right;">
+	          <big><span><%= @document.effective_date %></span></big><br>
+	          <% if @document.document_status == '1' %>
+	          	<span>有効日:<%= @document.expiration_date %></span><br>
+	          <% elsif @document.document_status == '2' %>
+	          	<span>納期<%= @document.expiration_date %></span><br>
+	          <% elsif @document.document_status == '4' %>
+	          	<span>お支払い期限<%= @document.expiration_date %></span><br>
+	          <% end %>
+	          書類番号: <span><%= @document.receipt_number %></span>
+	          <h3><%= @document.maker_name %></h3>
+	          〒 <%= @document.maker_postal_code.insert(3, "-") %><br>
+	          <%= @document.maker_address %><br>
+	          TEL: <%= @document.maker_phone_number %><br>
+	          担当者: <%= @document.maker_staff %><br>
+	        </div>
+	      </div>
+	      <div style="margin-top:2em;"></div>
+	      <div class="row">
+	        <div class="col-md-8 col-xs-8">
+	          <big>下記のとおり
+	          	<span>
+	          		<% if @document.document_status == '1' %>
+			      		<span>御見積</span>
+			      	<% elsif @document.document_status == '2' %>
+			      		<span>発注</span>
+			      	<% end %>
+			      	<% if @document.document_status == '3' %>
+			      		<span>御納品</span>
+			      	<% elsif @document.document_status == '4' %>
+			      		<span>御請求</span>
+			      	<% end %>
+	          	</span>申し上げます。</big>
+	        </div>
+	        <div class="col-md-4 col-xs-4" style="text-align:right;">
+	          単位: 円
+	        </div>
+	      </div>
+	            <table class="table">
+	        <thead>
+	          <tr>
+	            <th style="width:4em;text-align:right;"></th><th>品名</th><th style="width:4em;text-align:right;">数量</th><th style="width:4em;">単位</th><th style="text-align:right;">単価</th><th style="text-align:right;">金額</th>
+	          </tr>
+	        </thead>
+
+	        <tbody>
+	        	<% count = 0 %>
+	        	<% sum = 0 %>
+	        	<% @items.each do |item| %>
+		          <tr>
+		            <td style="text-align:right;"></td>
+		            <td><%= item.name %></td>
+		            <td style="text-align:right;"><%= item.number %></td>
+		            <td><%= item.unit %></td>
+		            <td style="text-align:right;"><%= item.price %></td>
+		            <td style="text-align:right;"><%= count =  item.price.to_i  * item.number.to_i %></td>
+		          </tr>
+		          <% sum = sum + count %>
+		        <% end %>
+		          <tr>
+		            <td colspan="3" rowspan="3">
+		            </td>
+		            	<td colspan="2">小計</td>
+		            	<td style="text-align:right;"><%= sum %></td>
+		          </tr>
+		          <tr>
+		            <td colspan="2">消費税(<span class="tax-rate">10</span>%)</td>
+		            <% tax = sum * 0.1 %>
+		            <td style="text-align:right;"><%= tax.round %></td>
+		          </tr>
+		          <tr>
+		            <td colspan="2">合計</td>
+		            <td style="text-align:right;">
+		            	<big><strong><span><%= sum + tax.round %></span></strong></big>
+		          	</td>
+		          </tr>
+	        </tbody>
+	      </table>
+
+	      <div>
+	        <% if @document.document_status == '4' %>
+	            <h4>振込先</h4>
+	            	<%= @document.payee %>
+	        <% end %>
+	      	<h4>備考</h4>
+	           <%= @document.remark %>
+	      </div>
+
+    </div>
+</body>
