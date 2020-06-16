@@ -77,7 +77,7 @@
 			                <th>Instagram</th>
 			                <td>
 			                	<%= link_to @user.instagram, style:"text-decoration: none; color: black" do %>
-								    <%= image_tag 'instagram_image.jpeg', :size =>'50x50' %>
+								    <%= image_tag asset_path("instagram_image.jpeg"), :size =>'50x50' %>
 								<% end %>			                	
 			                	<%= @user.instagram %>
 							</td>
@@ -86,7 +86,7 @@
 			                <th>FaceBook</th>
 			                <td >
 								<%= link_to @user.facebook, style:"text-decoration: none; color: black" do %>
-									<%= image_tag 'facebook_image.jpg', :size =>'50x50' %>
+									<%= image_tag asset_path("facebook_image.jpg"), :size =>'50x50' %>
 								<% end %>		 
 								<%= @user.facebook %>               	
 			                </td>
@@ -95,7 +95,7 @@
 							<th>Homepage</th>
 			                <td>
 								<%= link_to @user.homepage, style:"text-decoration: none; color: black" do %>
-									<%= image_tag 'homepage_image.png', :size =>'50x50' %>
+									<%= image_tag asset_path("homepage_image.png"), :size =>'50x50' %>
 								<% end %>
 								<%= @user.homepage %>
 			                </td>
