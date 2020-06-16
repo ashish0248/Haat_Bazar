@@ -91,11 +91,11 @@ gem 'rails-i18n'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-# #デプロイ用
-# gem 'dotenv-rails'
-# group :production do
-#   gem 'mysql2'
-# end
+#デプロイ用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
 
 
