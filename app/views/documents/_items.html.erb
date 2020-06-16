@@ -13,13 +13,10 @@
   <% end %>
 </div>
 
-<div style="text-align:right;">
-            単位: 円
-</div>
 <table class="table">
     <thead>
       <tr>
-        <th style="width:4em;text-align:right;"></th><th>品名</th><th style="width:4em;text-align:right;">数量</th><th style="width:4em;">単位</th><th style="text-align:right;">単価</th><th style="text-align:right;">金額</th>
+        <th style="width:4em;text-align:right;"></th><th>品名</th><th style="width:4em;text-align:right;">数量</th><th style="width:4em;">単位</th><th style="text-align:right;">単価</th><th style="text-align:right;">金額(円)</th>
       </tr>
     </thead>
 
@@ -35,8 +32,9 @@
             <td><%= item.name %></td>
             <td style="text-align:right;"><%= item.number %></td>
             <td><%= item.unit %></td>
-            <td style="text-align:right;"><%= item.price %></td>
-            <td style="text-align:right;"><%= count =  item.price.to_i  * item.number.to_i %></td>
+            <td style="text-align:right;"><%= item.price.to_i.to_s(:delimited) %></td>
+            <% count =  item.price.to_i  * item.number.to_i %>
+            <td style="text-align:right;"><%= count.to_s(:delimited) %></td>
           </tr>
           <% sum = sum + count %>
         <% end %>
@@ -44,17 +42,18 @@
           <td colspan="3" rowspan="3">
           </td>
           <td colspan="2">小計</td>
-          <td style="text-align:right;"><%= sum %></td>
+          <td style="text-align:right;"><%= sum.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td colspan="2">消費税(<span class="tax-rate">10</span>%)</td>
             <% tax = sum * 0.1 %>
-            <td style="text-align:right;"><%= tax.round %></td>
+            <td style="text-align:right;"><%= tax.round.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td colspan="2">合計</td>
             <td style="text-align:right;">
-              <big><strong><span><%= sum + tax.round %></span></strong></big>
+              <% total = sum + tax.round %>
+              <big><strong><span><%= total.to_s(:delimited) %></span></strong></big>
             </td>
           </tr>
     </tbody>

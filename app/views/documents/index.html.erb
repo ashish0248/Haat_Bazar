@@ -45,6 +45,9 @@
     				<td>
     					<%= link_to '表示',  document_path(document.id) %>
     				</td>
+            <td>
+              <%= link_to 'pdf',  document_path(format: :pdf, id: document.id) %>
+            </td>            
     			</tr>
     			<% end %>
     		</tbody>
