@@ -20,14 +20,14 @@
 	          〒<span><%= f.text_field :receiver_postal_code %></span><br>
 	          <span><%= f.text_field :receiver_address %></span><br>
 	          TEL:<span><%= f.text_field :receiver_phone_number %></span><br>
-	          担当者:<span><%= f.text_field :receiver_staff %></span>
+	          担当者:<span><%= f.text_field :receiver_staff %></span>様
 	        </div>
 	        <div class="col-md-5 col-xs-5" style="text-align:right;">
-	          <big><span><%= f.text_field :effective_date %></span></big><br>
+	          <big><span>発行日:<%= f.text_field :effective_date %></span></big><br>
 	          <% if @document.document_status == '1' %>
-	          	<span>有効日付<%= f.text_field :expiration_date %></span><br>
-	          <% elsif @document.document_status == '2' %>
-	          	<span>納期<%= f.text_field :expiration_date %></span><br>
+	          	<span>有効期限:<%= f.text_field :expiration_date %></span><br>
+	          <% elsif @document.document_status == '3' %>
+	          	<span>納品日:<%= f.text_field :expiration_date %></span><br>
 	          <% elsif @document.document_status == '4' %>
 	          	<span>お支払い期限<%= f.text_field :expiration_date %></span><br>
 	          <% end %>

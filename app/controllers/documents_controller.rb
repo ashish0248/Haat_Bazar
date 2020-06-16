@@ -55,6 +55,19 @@ class DocumentsController < ApplicationController
   def show
   	@document = Document.find(params[:id])
   	@items = Item.where(document_id: @document.id)
+
+     #pdf化
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "書類",
+               layout: 'layouts/pdf_layouts.html',
+               template: 'documents/show.html.erb',
+               encording: 'UTF-8',
+               page_size: 'A4'
+
+      end
+    end
   end
 
   private
