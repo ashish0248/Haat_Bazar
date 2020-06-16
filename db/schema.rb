@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_110310) do
+ActiveRecord::Schema.define(version: 2020_06_16_124414) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_110310) do
     t.string "receiver_phone_number"
     t.string "effective_date"
     t.string "expiration_date"
-    t.string "postage"
     t.string "receipt_number"
     t.string "payee"
     t.text "remark"
