@@ -15,4 +15,20 @@ ActiveAdmin.register User do
     permitted
   end
 
+  index do
+    selectable_column
+    id_column
+    column "メール",:email
+    column "作り手？",:user_maker
+    column "名前",:name
+    column "担当者名",:staff
+    column "自己紹介文",:introduction
+    column "郵便番号?",:postal_code
+    column "住所",:address
+    column "電話番号",:phone_number
+    column "プロフィール画像",:profile_image_id
+    column "有効会員？",:user_status
+    actions
+  end
+
 end

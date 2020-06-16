@@ -5,11 +5,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  #マイページ
-  def new
-    @user = current_user
-  end
-
   # 自己紹介ページ
   def show
     @user = User.find(params[:id])

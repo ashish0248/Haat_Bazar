@@ -3,8 +3,13 @@ class DocumentsController < ApplicationController
   def index
     # 自分の制作した書類の新しい順
     @documents = Document.where(maker_id: current_user.id).order(created_at: :desc)
+      #キーワード検索
+    if @keyword = params[:keyword]
+      @documents = @documents.search(params[:keyword])
+    end
   end
 
+   #書類の新規作成
   def new
   	@document_new = Document.new
   	@user = User.find(current_user.id)
@@ -12,17 +17,19 @@ class DocumentsController < ApplicationController
 
   end
 
+  #書類の作成と情報の挿入
   def create
   	@document = Document.new(document_params)
   	user_id = @document.receiver_id
   	@user = User.find(user_id)
+    #current_userの情報
   	@document.maker_id = current_user.id
   	@document.maker_name = current_user.name
   	@document.maker_postal_code = current_user.postal_code
   	@document.maker_address = current_user.address
   	@document.maker_staff = current_user.staff
   	@document.maker_phone_number = current_user.phone_number
-
+    #receiverの情報
   	@document.receiver_id = @user.id
   	@document.receiver_name = @user.name
   	@document.receiver_postal_code = @user.postal_code
@@ -30,17 +37,19 @@ class DocumentsController < ApplicationController
   	@document.receiver_staff = @user.staff
   	@document.receiver_phone_number = @user.phone_number
 
+    #日付
   	require "date"
   	@document.effective_date = Date.today
 
   	@document.save
-
+    #編集画面で編集を続ける
   	redirect_to edit_document_path(@document.id)
   end
 
   def edit
   	@document = Document.find(params[:id])
 
+    #別テーブルの商品の取得
   	@items = Item.where(document_id: @document.id)
   	@item_new = Item.new(document_id: @document.id)
 
@@ -49,6 +58,7 @@ class DocumentsController < ApplicationController
   def update
   	@document = Document.find(params[:id])
   	@document.update(document_params)
+    
   	redirect_to document_path(@document.id)
   end
 

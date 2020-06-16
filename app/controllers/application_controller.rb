@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  #ログインに必要
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_maker, :name, :staff, :introduction, :postal_code, :address, :phone_number, :profile_image, :tag_list, :instagram, :facebook, :homepage])
   end

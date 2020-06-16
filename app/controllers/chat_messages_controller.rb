@@ -4,6 +4,7 @@ class ChatMessagesController < ApplicationController
 		#フォローしている人＝チャット可能な人
 		@users = current_user.followings
 
+		#フォローしていないが、フォローされている人
 		@not_users = current_user.followers
 	end
 

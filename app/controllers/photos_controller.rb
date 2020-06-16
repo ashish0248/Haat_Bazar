@@ -22,6 +22,7 @@ class PhotosController < ApplicationController
     end
   end
 
+   #編集画面
   def edit
   	@photo = Photo.find(params[:id])
   end

@@ -34,8 +34,8 @@
 	          	<span><strong>納期日: </strong><%= @document.expiration_date %></span><br>
 	          <% elsif @document.document_status == '4' %>
 	          	<span><strong>お支払い期限: </strong><%= @document.expiration_date %></span><br>
-	          	<span><strong>書類番号:</strong> <%= @document.receipt_number %></span>
 	          <% end %>
+	          <span><strong>書類番号:</strong><%= @document.receipt_number %></span>
 	        </div>
 	      </div>
 	      <div style="margin-top:2em;"></div>
@@ -106,6 +106,5 @@
 	      	<h4>備考</h4>
 	           <%= @document.remark %>
 	      </div>
-
     </div>
 </body>

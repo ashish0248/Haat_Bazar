@@ -16,7 +16,7 @@ before_action :set_user, except: [:index]
     else
       redirect_back(fallback_location: root_path)
     end
-    # 非同期
+    # 非同期へ
   end
 
   def destroy
@@ -25,7 +25,7 @@ before_action :set_user, except: [:index]
     else
       redirect_back(fallback_location: root_path)
     end
-    # 非同期
+    # 非同期へ
   end
 
   private

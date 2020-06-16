@@ -5,4 +5,8 @@ class Document < ApplicationRecord
 	belongs_to :maker, class_name: 'User', :foreign_key => 'maker_id'
 	belongs_to :receiver, class_name: 'User', :foreign_key => 'receiver_id'
 
+	def self.search(keyword)
+    	where(['receipt_number LIKE ? OR receiver_name LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+	end
+
 end

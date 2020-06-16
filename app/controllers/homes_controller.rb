@@ -2,8 +2,8 @@ class HomesController < ApplicationController
   # トップページ
   def top
     @user = User.where(user_status: true)
-  	@user_makers = @user.where(user_maker: true)
-  	@user_shops = @user.where(user_maker: false)
+  	@user_makers = @user.where(user_maker: true).order(created_at: :desc)
+  	@user_shops = @user.where(user_maker: false).order(created_at: :desc)
   end
 
   # ユーザー一覧ページ
@@ -17,6 +17,7 @@ class HomesController < ApplicationController
       @user_makers = @users.where(user_maker: true)
       @user_shops = @users.where(user_maker: false)
     end
+    #キーワード検索
     if @keyword = params[:keyword]
       @searched_users = User.search(params[:keyword])
       @user_makers = @searched_users.where(user_maker: true)
