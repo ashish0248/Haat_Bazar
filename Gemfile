@@ -84,7 +84,12 @@ gem 'dotenv-rails'
 # ドラッグアンドドロップ用
 gem 'acts_as_list'
 
+#日本語化
 gem 'rails-i18n'
+
+#pdf用
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # #デプロイ用
 # gem 'dotenv-rails'

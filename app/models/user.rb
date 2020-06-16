@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :passive_notifications, foreign_key:"visited_id", class_name: "Notification", dependent: :destroy
   # ドラッグ・ドロップ用
   has_many :photos, -> { order(position: :asc) }
+  #document用
+  has_many :makers, class_name: 'Document', :foreign_key => 'maker_id'
+  has_many :receivers, class_name: 'Document', :foreign_key => 'receiver_id'
 
   ## バリデーション
   validates :name, presence: true

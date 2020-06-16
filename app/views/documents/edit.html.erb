@@ -1,0 +1,67 @@
+<body>
+    <div class="container">
+      <h1 style="text-align:center;">
+      	<!-- 書類の種類の判定 -->
+      	<% if @document.document_status == '1' %>
+      		<span>見積書</span>
+      	<% elsif @document.document_status == '2' %>
+      		<span>発注書</span>
+      	<% end %>
+      	<% if @document.document_status == '3' %>
+      		<span>納品書</span>
+      	<% elsif @document.document_status == '4' %>
+      		<span>請求書</span>
+      	<% end %>
+      </h1>
+      <%= form_for(@document, url: document_path(@document.id), html: { id: :edit_document}) do |f| %>
+	      <div class="row">
+	        <div class="col-md-7 col-xs-7">
+	          <h2><%= f.text_field :receiver_name %>　様</h2>
+	          〒<span><%= f.text_field :receiver_postal_code %></span><br>
+	          <span><%= f.text_field :receiver_address %></span><br>
+	          TEL:<span><%= f.text_field :receiver_phone_number %></span><br>
+	          担当者:<span><%= f.text_field :receiver_staff %></span>様
+	        </div>
+	        <div class="col-md-5 col-xs-5" style="text-align:right;">
+	          <big><span>発行日:<%= f.text_field :effective_date %></span></big><br>
+	          <% if @document.document_status == '1' %>
+	          	<span>有効期限:<%= f.text_field :expiration_date %></span><br>
+	          <% elsif @document.document_status == '3' %>
+	          	<span>納品日:<%= f.text_field :expiration_date %></span><br>
+	          <% elsif @document.document_status == '4' %>
+	          	<span>お支払い期限<%= f.text_field :expiration_date %></span><br>
+	          <% end %>
+	          書類番号 <span><%= f.text_field :receipt_number %></span>
+	          <h3><%= f.text_field :maker_name %></h3>
+	          〒<%= f.text_field :maker_postal_code %><br>
+	          <%= f.text_field :maker_address %><br>
+	          TEL: <%= f.text_field :maker_phone_number %><br>
+	          担当者: <%= f.text_field :maker_staff %><br>
+	        </div>
+	      </div>
+	      <div style="margin-top:2em;"></div>
+	      <div class="row">
+	        <div class="col-md-8 col-xs-8">
+	        </div>
+	      </div>
+
+	      <div>
+	        <% if @document.document_status == '4' %>
+	            <h4>振込先</h4>
+	            	<%= f.text_area :payee %>
+	        <% end %>
+	      	<h4>備考</h4>
+	           <%= f.text_area :remark %>
+	      </div>
+	      
+      <% end %>
+
+      <div id="item">
+	  	<%= render 'documents/items', items: @items, item_new: @item_new %>
+	  </div>
+
+	     <!-- javaでsubmitを行う -->
+	    <input type="button" id="b1" value="プレビュー" onclick="test1()">
+
+    </div>
+</body>
