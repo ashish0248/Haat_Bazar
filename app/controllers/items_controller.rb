@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@item.save
 
-		# 非同期用
+		# 非同期用のパラメーター
 		@items = Item.where(document_id: @item.document_id)
   		@item_new = Item.new(document_id: @item.document_id)
 	end
@@ -14,11 +14,12 @@ class ItemsController < ApplicationController
 		document_id = @item.document_id
 		@item.destroy
 
-		# 非同期用
+		# 非同期用のパラメータ
 		@items = Item.where(document_id: @item.document_id)
   		@item_new = Item.new(document_id: @item.document_id)
 	end
 
+	#編集画面
 	def edit
 		@item = Item.find(params[:id])
 	end
@@ -26,6 +27,7 @@ class ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		@item.update(item_params)
+		#書類の編集画面に戻る
 		redirect_to  edit_document_path(@item.document_id)
 	end
 
