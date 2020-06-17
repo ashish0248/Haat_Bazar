@@ -9,16 +9,15 @@ class PhotosController < ApplicationController
       @followed_users = current_user.followers
       @followed_users.each do |user|
         current_user.create_notification_photo!(user)
-
-      redirect_to user_path(current_user.id)
       end
+      redirect_to user_path(current_user.id)
     else
-    @user = User.find(current_user.id)
-    @photos = Photo.where(user_id: @user.id)
-    # ドラッグ・ドロップ用
-    @photos = @user.photos
+      @user = User.find(current_user.id)
+      @photos = Photo.where(user_id: @user.id)
+      # ドラッグ・ドロップ用
+      @photos = @user.photos
 
-    render 'users/show'
+      render 'users/show'
     end
   end
 
@@ -50,3 +49,4 @@ class PhotosController < ApplicationController
 
 
 end
+

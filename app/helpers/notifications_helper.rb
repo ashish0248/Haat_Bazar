@@ -3,17 +3,14 @@ module NotificationsHelper
 	    #通知を送ってきたユーザーを取得
 	    @visitor = notification.visitor
 	    #コメントの内容を通知に表示する
-	    # notification.actionがfollowかchatかで処理を変える
-	    
+	    # notification.actionがfollowかchatかphotoかで処理を変える
 	    case notification.action
 	    when 'follow'
-	    	#aタグで通知を作成したユーザーshowのリンクを作成
-	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんがあなたをフォローしました'
+	    	notification.visitor.name + 'さんがあなたをフォローしました'
 	    when 'chat'
-	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんがチャットであなたにメッセージを送りました'
+	    	notification.visitor.name + 'さんがチャットであなたにメッセージを送りました'
 	    when 'photo'
-	    	#aタグで通知を作成したユーザーshowのリンクを作成
-	    	tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんが写真を新たに投稿しました'
+	    	notification.visitor.name + 'さんが写真を新たに投稿しました'
 	    end
 	end
 
