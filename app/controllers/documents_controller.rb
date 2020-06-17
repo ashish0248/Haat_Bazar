@@ -24,7 +24,7 @@ class DocumentsController < ApplicationController
 
     #バリデーションチェック
     if @document.save
-      	@document = Document.new(document_params)
+
       	user_id = @document.receiver_id
       	@user = User.find(user_id)
         #current_userの情報
@@ -57,11 +57,15 @@ class DocumentsController < ApplicationController
 
   def edit
   	@document = Document.find(params[:id])
-
-    #別テーブルの商品の取得
-  	@items = Item.where(document_id: @document.id)
-  	@item_new = Item.new(document_id: @document.id)
-
+    
+    #編集できるのは作った本人だけ
+    if @document.maker_id == current_user.id
+      #別テーブルの商品の取得
+    	@items = Item.where(document_id: @document.id)
+    	@item_new = Item.new(document_id: @document.id)
+    else
+      redirect_to documents_path
+    end
   end
 
   def update
