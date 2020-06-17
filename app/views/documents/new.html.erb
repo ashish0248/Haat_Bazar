@@ -1,7 +1,8 @@
 <div class="body">
     <div class="container">
        <div class="row">
-       		<%= form_for(@document_new, url: documents_path ) do |f| %>
+            <%= render "devise/shared/error_messages", resource: @document %>
+       		<%= form_for(@document, url: documents_path ) do |f| %>
        		<!-- 書類の種類の選択 -->
     		<div>
                 <!-- 発注書が作れるのはお店のみ -->
@@ -13,7 +14,7 @@
             		<%= f.radio_button :document_status, :'4' %>
             					<span>請求書の作成</span><br>
                 <% else %>
-                    <%= f.radio_button :document_status, :'2' %>
+                    <%= f.radio_button :document_status, :'2', checked: true %>
                                 <span>発注書の作成</span><br>
                 <% end %>
     		</div>
@@ -27,13 +28,6 @@
     		<%= f.submit "書類作成画面へ進む", class: "btn btn-primary", :style=> "margin-left: 200px;" %>
 
     		<% end %>
-
-
-
-
-
-
-
       </div>
     </div>
 </div>

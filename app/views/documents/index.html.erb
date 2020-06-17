@@ -33,45 +33,51 @@
     				<th></th>
     				<th></th>
             <th></th>
+            <th></th>
     			</tr>
     		</thead>
     		<tbody>
     			<% @documents.each do |document| %>
     			<% user = User.find(document.receiver_id) %>
-    			<tr>
-    				<td>
-    					<%= attachment_image_tag(user, :profile_image, :fill, 70, 70 ) %>
-    				</td>
-    				<td><%= user.name %></td>
-    				<td>
-    					<% if document.document_status == '1' %>
-					  		<span>見積書</span>
-					  	<% elsif document.document_status == '2' %>
-					  		<span>発注書</span>
-					  	<% end %>
-					  	<% if document.document_status == '3' %>
-					  		<span>納品書</span>
-					  	<% elsif document.document_status == '4' %>
-					  		<span>請求書</span>
-      				<% end %>
-    				</td>
-            <td>
-              <%= document.receipt_number %>
-            </td>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-    				<td>
-    					<%= link_to '編集',  edit_document_path(document.id) %>
-    				</td>
-    				<td>
-    					<%= link_to '表示',  document_path(document.id) %>
-    				</td>
-            <td>
-              <%= link_to 'pdf',  document_path(format: :pdf, id: document.id) %>
-            </td>            
-    			</tr>
+      			<tr>
+      				<td>
+                <%= link_to user_path(user.id) do %>
+      					 <%= attachment_image_tag(user, :profile_image, :fill, 70, 70 ) %>
+                <% end %>
+      				</td>
+      				<td><%= user.name %></td>
+      				<td>
+      					<% if document.document_status == '1' %>
+  					  		<span>見積書</span>
+  					  	<% elsif document.document_status == '2' %>
+  					  		<span>発注書</span>
+  					  	<% end %>
+  					  	<% if document.document_status == '3' %>
+  					  		<span>納品書</span>
+  					  	<% elsif document.document_status == '4' %>
+  					  		<span>請求書</span>
+        				<% end %>
+      				</td>
+              <td>
+                <%= document.receipt_number %>
+              </td>
+              <td>
+                <%= user.email %>
+              </td>
+              <td>
+      				<td>
+      					<%= link_to '編集',  edit_document_path(document.id) %>
+      				</td>
+      				<td>
+      					<%= link_to '表示',  document_path(document.id) %>
+      				</td>
+              <td>
+                <%= link_to 'pdf',  document_path(format: :pdf, id: document.id) %>
+              </td>
+              <td>
+                <%= link_to "削除する", document_path(document.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+              </td>         
+      			</tr>
     			<% end %>
     		</tbody>
     	</table>

@@ -23,6 +23,9 @@
 					       			<% end %>
 	       						</td>
 	       						<td><%= user.name %><br>
+									<% if  user.user_status == false %>
+										<span style="color: red">退会済みユーザー</span><br>
+									<% end %>	       							
 									<% if  user.user_maker == true%>
 										作り手
 									<% else %>	
@@ -49,7 +52,10 @@
 						       			<% end %>
 		       						</td>
 		       						<td><%= user.name %><br>
-		       							<span style="color: red">フォローしていないユーザー</span><br>
+									<% if  user.user_status == false %>
+										<span style="color: red">退会済みユーザー</span><br>
+									<% end %>
+									<span style="color: red">フォローしていないユーザー</span><br>
 										<% if  user.user_maker == true%>
 											作り手
 										<% else %>	

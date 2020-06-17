@@ -1,7 +1,12 @@
 <div class="body">
     <div class="container">
        <div class="row">
-			<h1 id="room" data-room="<%= @chat_room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h1>
+       		<div>
+				<h1><%= @user.name %>さんとのチャット</h1>
+				<% if @user.user_status == false %>
+					<span style="color: red;">退会したユーザーです</span>
+				<% end %>
+			</div>
 			<div class="col-xs-3">
 				<%= attachment_image_tag(@user, :profile_image, :fill, 200, 200 ) %>
        		</div>

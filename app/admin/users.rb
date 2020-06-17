@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-
+  menu priority: 1, label: "ユーザー"
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -23,7 +23,7 @@ ActiveAdmin.register User do
     column "名前",:name
     column "担当者名",:staff
     column "自己紹介文",:introduction
-    column "郵便番号?",:postal_code
+    column "郵便番号",:postal_code
     column "住所",:address
     column "電話番号",:phone_number
     column "プロフィール画像",:profile_image_id

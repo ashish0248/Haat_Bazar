@@ -92,10 +92,10 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 # デプロイ用
-gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+# gem 'dotenv-rails'
+# group :production do
+#   gem 'mysql2'
+# end
 
 
 
