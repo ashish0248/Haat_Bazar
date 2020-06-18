@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+
   menu priority: 1, label: "ユーザー"
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -30,5 +31,5 @@ ActiveAdmin.register User do
     column "有効会員？",:user_status
     actions
   end
-
+  
 end

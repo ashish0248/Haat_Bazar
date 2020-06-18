@@ -7,7 +7,7 @@ class Document < ApplicationRecord
 
 
 	#バリデーション
-	validates :document_status, presence: true
+	# validates :document_status, presence: true
 
 
 	def self.search(keyword)
