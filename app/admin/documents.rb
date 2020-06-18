@@ -1,19 +1,19 @@
 ActiveAdmin.register Document do
-  menu priority: 3, label: "書類一覧"
+ menu priority: 3, label: "書類一覧"
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :document_status, :maker_id, :receiver_id, :maker_name, :maker_postal_code, :maker_address, :maker_staff, :maker_phone_number, :receiver_name, :receiver_postal_code, :receiver_address, :receiver_staff, :receiver_phone_number, :effective_date, :expiration_date, :receipt_number, :payee, :remark
+  # permit_params :document_status, :maker_id, :receiver_id, :maker_name, :maker_postal_code, :maker_address, :maker_staff, :maker_phone_number, :receiver_name, :receiver_postal_code, :receiver_address, :receiver_staff, :receiver_phone_number, :effective_date, :expiration_date, :receipt_number, :payee, :remark, :send_status
   #
   # or
   #
-  permit_params do
-    permitted = [:document_status, :maker_id, :receiver_id, :maker_name, :maker_postal_code, :maker_address, :maker_staff, :maker_phone_number, :receiver_name, :receiver_postal_code, :receiver_address, :receiver_staff, :receiver_phone_number, :effective_date, :expiration_date, :receipt_number, :payee, :remark]
-    permitted << :other if params[:action] == 'create' && current_user.admin?
-    permitted
-  end
+  # permit_params do
+  #   permitted = [:document_status, :maker_id, :receiver_id, :maker_name, :maker_postal_code, :maker_address, :maker_staff, :maker_phone_number, :receiver_name, :receiver_postal_code, :receiver_address, :receiver_staff, :receiver_phone_number, :effective_date, :expiration_date, :receipt_number, :payee, :remark, :send_status]
+  #   permitted << :other if params[:action] == 'create' && current_user.admin?
+  #   permitted
+  # end
 
   index do
     selectable_column
@@ -38,7 +38,7 @@ ActiveAdmin.register Document do
     column "書類番号",:receipt_number
     column "振込先",:payee
     column "備考",:remark
+    column "送信済み？", :send_status
     actions
   end
-  
 end

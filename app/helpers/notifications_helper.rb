@@ -11,6 +11,8 @@ module NotificationsHelper
 	    	notification.visitor.name + 'さんがチャットであなたにメッセージを送りました'
 	    when 'photo'
 	    	notification.visitor.name + 'さんが写真を新たに投稿しました'
+	    when 'document'
+	    	notification.visitor.name + 'さんがあなたに書類を送りました'
 	    end
 	end
 

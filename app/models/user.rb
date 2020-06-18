@@ -101,6 +101,19 @@ class User < ApplicationRecord
     end
   end
 
+    # document関係の通知
+  def create_notification_document!(current_user)
+    #すでに通知が作成されているか確認
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'document'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'document'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
   # 検索用
   def self.search(keyword)
     where(['name LIKE ? OR introduction LIKE ? OR address LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
