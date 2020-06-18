@@ -38,7 +38,6 @@ ActiveAdmin.register Document do
     column "書類番号",:receipt_number
     column "振込先",:payee
     column "備考",:remark
-    column "送信済み？",:send
     actions
   end
   

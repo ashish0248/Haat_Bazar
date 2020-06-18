@@ -5,9 +5,7 @@ class DocumentsController < ApplicationController
     @documents = Document.where(maker_id: current_user.id).order(created_at: :desc)
       #キーワード検索
     if @keyword = params[:keyword]
-      @search_documents = Document.search(params[:keyword])
-      @documents = @search_documents.where(maker_id: current_user.id).order(created_at: :desc)
-      
+      @documents = @documents.search(params[:keyword])
     end
   end
 
@@ -72,10 +70,6 @@ class DocumentsController < ApplicationController
 
   def update
   	@document = Document.find(params[:id])
-
-    #sendカラムがtrueかfalseの確認のため作成
-    @document_new = Document.new(document_params)
-      #trueなら受信者側に通知
       @document.update(document_params)
       redirect_to document_path(@document.id)
   end
