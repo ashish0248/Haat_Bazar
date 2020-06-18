@@ -70,9 +70,8 @@ class DocumentsController < ApplicationController
 
   def update
   	@document = Document.find(params[:id])
-  	@document.update(document_params)
-    
-  	redirect_to document_path(@document.id)
+      @document.update(document_params)
+      redirect_to document_path(@document.id)
   end
 
   def show

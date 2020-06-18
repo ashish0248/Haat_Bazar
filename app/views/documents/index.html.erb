@@ -28,7 +28,7 @@
     				<th>宛先</th>
     				<th>種類</th>
     				<th>書類番号</th>
-            <th>メールアドレス</th>
+             <th>メールアドレス</th>
     				<th></th>
     				<th></th>
     				<th></th>
@@ -62,8 +62,8 @@
                 <%= document.receipt_number %>
               </td>
               <td>
-                <%= user.email %>
-              </td>
+                 <%= user.email %>
+               </td>              
               <td>
       				<td>
       					<%= link_to '編集',  edit_document_path(document.id) %>
@@ -80,7 +80,7 @@
       			</tr>
     			<% end %>
     		</tbody>
-    	</table>
+   
       </div>
     </div>
 </div>
