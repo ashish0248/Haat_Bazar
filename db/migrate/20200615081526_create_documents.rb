@@ -20,6 +20,7 @@ class CreateDocuments < ActiveRecord::Migration[5.2]
     	t.string :receipt_number
     	t.string :payee
     	t.text :remark
+        #t.boolean :send, null: false, default: false
       t.timestamps
     end
   end
