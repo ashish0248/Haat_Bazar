@@ -9,32 +9,28 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="wrapper">
+  <body  class="wrapper">
     <!-- ヘッダー部分 -->
-      <nav style="background-color: white; margin-bottom: 50px">
-           <div class="navbar-header" style="color: green;font-size: 45px">
-            HaatBazar
+      <nav class="header">
+           <div class="header-rogo">
+            <%= link_to 'Haat Bazar', root_path, style:"text-decoration: none; color: white" %>
           </div>
-         <ul class="nav navbar-nav navbar-right" style="font-size: 16px; margin-right: 50px">
+         <ul class="nav navbar-nav" style="font-size: 16px; margin-right: 50px">
           <!-- 会員ログイン後 -->
           <% if user_signed_in? %>
-            <li style=" margin: 15px 40px">ようこそ、　<%= current_user.name %>　さん！</li>
-            <li>
+            <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>          
+            <li class="header-list">
+              <% if unchecked_notifications.any? %>
+                <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: yellow", class:"glyphicon glyphicon-bell" %>
+              <% else %>
+                 <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: white" %>
+              <% end %>
+            </li>           
+            <li class="header-list">
               <div class="dropdown" style=" margin-top: 15px">
-                <!-- 通知があるか -->
-                <% if unchecked_notifications.any? %>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; color: black">マイページ</a><span class="glyphicon glyphicon-bell" aria-hidden="true" style="color: red"></span>
-                <% else %>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; color: black">マイページ </a>
-                <% end %>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; color: white">My page</a>
+
                   <ul class="dropdown-menu">
-                      <li >
-                        <% if unchecked_notifications.any? %>
-                          <%= link_to '通知あり', notifications_path, style:"text-decoration: none; color: black", style:"color: red" %>
-                        <% else %>
-                           <%= link_to '通知なし', notifications_path, style:"text-decoration: none; color: black" %>
-                        <% end %>
-                    </li>
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
@@ -48,22 +44,20 @@
                   </ul>
                </div>
             </li>
-            <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: black" %></li>
+            <li class="header-list"><%= link_to "Users", homes_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list"><%= link_to "Logout", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: white" %></li>
 
           <!-- 非ログイン -->
           <% else %>
-            <li><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "作り手・お店一覧", homes_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "新規登録",  root_path(anchor: 'user_new'), style:"text-decoration: none; color: black" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, style:"text-decoration: none; color: black" %></li>
+            <li class="header-list"><%= link_to "Sign up",  root_path(anchor: 'user_new'), style:"text-decoration: none; color: white;", data: {"turbolinks" => false} %></li>            
+            <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list"><%= link_to "Users", homes_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list"><%= link_to "Login", new_user_session_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list"><%= link_to "Contact",  new_home_path, style:"text-decoration: none; color: white" %></li>            
 
           <% end %>
         </ul>
       </nav>
-
 
     <%= yield %>
     <!-- フッター部分 -->

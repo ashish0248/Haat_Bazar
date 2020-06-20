@@ -18,4 +18,20 @@
 //= require_tree .
 //= require jquery.jpostal
 
+$(window).scroll(function() {
+ 　　// .animation 配下の　.anm_modを対象に見る
+ $(".animation .anm_mod").each(function() {
+  // スクロール中、各UIパーツ　.anm_modがブラウザ画面内に入ったら activeクラスが付与される
+  const position = $(this).offset().top;
+  const scroll = $(window).scrollTop();
+  const windowHeight = $(window).height();
+  if (scroll > position - windowHeight) {
+   $(this).addClass("active");
+  }
+  // スクロール中、トップ画面付近まで戻ったら activeクラスを解除 ＝ 何度でもスクロールアニメが表現可能。一度しかアニメーションしたく無ければここを削除してください。
+  if (scroll < 100) {
+   $(this).removeClass("active");
+  }
+ });
+});
 

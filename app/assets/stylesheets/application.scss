@@ -30,20 +30,94 @@
 	clear: both;
 }
 
+ @font-face {
+  font-family: 'Rogo';
+  src: asset_url('EBGaramond12-Regular.ttf') format('truetype');
+}
+ @font-face {
+  font-family: 'mintyo';
+  src: asset_url('SourceHanSerif-ExtraLight.otf') format('truetype');
+}
+
 body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: #EEEEEF;
   color: black;
+  font-family: 'mintyo';
+}
+
+.body {
+  margin-top: 150px;
+  color: #696969;
 }
 
 /*ヘッダー*/
+.header{
+  position: fixed;
+  width: 100%;
+  background-color: rgba( 0, 0, 0, 0.5);
+  margin-bottom: 50px;
+  z-index: 100;
+}
+
+.header-rogo{
+  font-family: 'Rogo';
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.header-list{
+  margin-left: 210px
+}
+
 .dropdown:hover > .dropdown-menu{
   display: block;
 }
 
+
+/*アニメーション*/
+.animation {
+ .anm_mod {
+  /*一度透明にしておく*/
+  opacity: 0;
+  /*デフォルトでは下方向（から上に向かう）に設定*/
+  transform: translate3d(0, 100%, 0);
+  /*デフォルトでは1秒に設定*/
+  transition: all 1s ease;
+  &.left {
+   transform: translate3d(-100%, 0, 0);
+  }
+  &.right {
+   transform: translate3d(100%, 0, 0);
+  }
+  &.delay {
+   transition: all 2s ease;
+  }
+  &.fast {
+   transition: all 0.8 ease;
+  }
+ }
+}
+
+.animation .anm_mod.active {
+/*jsでスクロール値に来たらactiveクラスが付与されるので、透明を解除しながらUIパーツが元の位置に戻る作用をする*/
+ opacity: 1;
+ transform: translate3d(0, 0, 0);
+}
+
+
 /*topページ*/
+.top-image {
+  background-image: image-url("top.jpeg");
+  height:950px;
+  width: auto;
+  background-size:cover;
+}
+
 .recommend_user {
 	float: left;
   margin-left: 3%;
@@ -58,7 +132,8 @@ body{
 
 .registration-maker {
   font-size: 30px;
-  margin: 80px;
+  margin-top: 50px;
+  margin-right: 140px;
   background-color: rgba( 0, 0, 0, 0.5);
 }
 .registration-maker > p{
@@ -69,7 +144,8 @@ body{
 
 .registration-shop {
   font-size: 30px;
-  margin: 280px 60px;
+  margin-top: 300px;
+  margin-left: 150px;
   background-color: rgba(255,255,255,0.8);
 }
 .registration-shop > p{

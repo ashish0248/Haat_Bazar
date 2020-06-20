@@ -1,42 +1,42 @@
-<div class="body">
-    <div class="container">
 
-    	<div style="margin: 300px;, background-color: black">
-    		<h2>Haat Bazar</h2>
+    	<div class="top-image">
+    		
     	</div>
+<div class="body">
 
     	<div class="row">
-	    	<div class="clearfix">
+    	<div class="container">
+	    	<div class="clearfix animation">
 
-	    		<h3>おすすめの作り手</h3>
+	    		<h3 style="border-bottom: solid 1px">おすすめの作り手</h3><br>
 	    		<!-- 新着4人のみ載せる -->
 	    		<% count = 0 %>
 		    	<% @user_makers.each do |user_maker| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="recommend_user">
+							<div class="recommend_user anm_mod  left delay">
 								<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
-					        <% end %>
-					        <h4 style="text-align:center"><%= user_maker.name %></h4>
+					        <% end %><br>
+					        <span><%= user_maker.name %></span>
 							</div>
 					    </div>
 					    <% count = count + 1 %>
 				    <% end %>
 				<% end %>
 	    	</div>
-	    	<div  class="clearfix">
-	    		<h3>おすすめのお店</h3>
+	    	<div  class="clearfix animation" style="margin-top: 100px">
+	    		<h3 style="border-bottom: solid 1px">おすすめのお店</h3><br>
 	    		<!-- 4人のみ載せる -->
 	    		<% count = 0 %>
 		    	<% @user_shops.each do |user_shop| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="recommend_user">
+							<div class="recommend_user anm_mod right delay">
 								<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
-					        <% end %>
-					        <h4 style="text-align:center"><%= user_shop.name %></h4>
+					        <% end %><br>
+					        <span><%= user_shop.name %></span>
 							</div>
 					    </div>
 					    <% count = count + 1 %>
@@ -45,34 +45,34 @@
 	    	</div>
       	</div>
 
-
-		<div class="body">
 		    <div class="container">
-		       <div class="row">
-		       	
-		        <div id="user_new"class="registration-image" style="margin-top: 150px;" >
-		          <!-- 作り手側 -->
-		           	<div class="col-xs-6">
-		           		<!-- そのまま新規登録画面へ -->
-		              <div class="registration-maker">
-		                <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-		                <p>・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
-		              </div>
-		           	</div>
-		           	<!-- お店側 -->
-		           	<div class="col-xs-6"> 
-		           		<!-- user_makerをfalseにする -->
-		              <div class="registration-shop">
-		                <p>・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
-		              <%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
-		              </div>
-		           	</div>
+		       <div class="row" id="user_new">
+		       	<div class="animation">
+					<div class="registration-image anm_mod fast" style="margin-top: 130px;" >
+			          <!-- 作り手側 -->
+			           	<div class="col-xs-6">
+			           		<!-- そのまま新規登録画面へ -->
+			              <div class="registration-maker anm_mod right delay">
+			                <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
+			                <p>・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
+			              </div>
+			           	</div>
+			           	<!-- お店側 -->
+			           	<div class="col-xs-6"> 
+			           		<!-- user_makerをfalseにする -->
+			              <div class="registration-shop anm_mod left delay">
+			                <p>・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
+			              	<%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
+			              </div>
+			           	</div>
+			        </div>
 
 		        </div>
-
 		       </div>
 		    </div>
-		</div>
+		<div style="margin: 400px">
+				
+		</div>	
 
     </div>
 </div>
