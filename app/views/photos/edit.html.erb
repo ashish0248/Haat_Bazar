@@ -6,7 +6,7 @@
               <%= attachment_image_tag @photo, :photo_image, :limit, 250, 250 %>
 		    			<%= f.attachment_field :photo_image,id: :post_img %>
 
-		    			<%= f.text_area :introduction %>
+		    			<%= f.text_area :introduction, :size=>"60x10" %>
 
 						<%= f.submit "編集を更新"%>
 		    	<% end %>

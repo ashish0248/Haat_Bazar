@@ -9,12 +9,12 @@
 	    	<div class="clearfix">
 
 	    		<h3>おすすめの作り手</h3>
-	    		<!-- 4人のみ載せる -->
+	    		<!-- 新着4人のみ載せる -->
 	    		<% count = 0 %>
 		    	<% @user_makers.each do |user_maker| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="introduce" style="margin-left: 20px">
+							<div class="recommend_user">
 								<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
 					        <% end %>
@@ -32,7 +32,7 @@
 		    	<% @user_shops.each do |user_shop| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="introduce" style="margin-left: 20px">
+							<div class="recommend_user">
 								<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
 					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
 					        <% end %>
@@ -50,20 +50,20 @@
 		    <div class="container">
 		       <div class="row">
 		       	
-		        <div id="user_new" class="registration-image" style="margin-top: 150px;" >
+		        <div id="user_new"class="registration-image" style="margin-top: 150px;" >
 		          <!-- 作り手側 -->
 		           	<div class="col-xs-6">
 		           		<!-- そのまま新規登録画面へ -->
-		              <div style="font-size: 30px; margin: 80px; background-color: rgba( 0, 0, 0, 0.5);">
+		              <div class="registration-maker">
 		                <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-		                <p style="font-size: 20px; color: white; margin: 20px;">・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
+		                <p>・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
 		              </div>
 		           	</div>
 		           	<!-- お店側 -->
 		           	<div class="col-xs-6"> 
 		           		<!-- user_makerをfalseにする -->
-		              <div style="font-size: 30px; margin: 280px 60px; background-color: rgba(255,255,255,0.8);">
-		                <p style="font-size: 20px;">・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
+		              <div class="registration-shop">
+		                <p>・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
 		              <%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
 		              </div>
 		           	</div>

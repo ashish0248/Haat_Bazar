@@ -1,6 +1,5 @@
 ja:
   devise:
-    failure:
       user:
         inactive: "退会済みユーザーです"
   activerecord:

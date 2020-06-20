@@ -15,10 +15,10 @@
           
         </div>
        	<div class="col-md-7 col-xs-7">
-       		<h3>作成済み書類一覧ページ(新着順)</h3>
+       		<h3>作成済み書類一覧</h3>
        	</div>
        	 <div class="col-md-5 col-xs-5">
-       		<h3><%= link_to '書類の新規作成',  new_document_path %></h3>
+       		<h3><%= link_to '新規作成', new_document_path, class:"glyphicon glyphicon-file", style:"text-decoration: none;" %></h3>
        	</div>
 
         <% if @documents.empty? %>
@@ -64,26 +64,30 @@
                     <%= document.receipt_number %>
                   </td>         
           				<td>
-          					<%= link_to '編集',  edit_document_path(document.id) %>
+                    <% if document.send_status == false %>
+          					   <%= link_to '編集',  edit_document_path(document.id), class: "glyphicon glyphicon-pencil", style:"text-decoration: none;" %>
+                    <% else %>
+                        <span>編集不可</span>
+                    <% end %>
           				</td>
           				<td>
           					<%= link_to '表示',  document_path(document.id) %>
           				</td>
                   <td>
-                    <%= link_to 'pdf',  document_path(format: :pdf, id: document.id) %>
+                    <%= link_to 'pdfで表示',  document_path(format: :pdf, id: document.id) %>
                   </td>
                   <td>
                     <% if document.send_status == false %>
-                      <%= link_to '送信する',  document_path(document.id, status: 1), send_status:true, method: :patch, "data-confirm" => "本当に送信しますか？書類の削除はできなくなります" %>
+                      <%= link_to '送信する',  document_path(document.id, status: 1), send_status:true, method: :patch, "data-confirm" => "本当に送信しますか？書類の編集及び削除はできなくなります" %>
                     <% else %>
                       <span>送信済みです</span>
                     <% end %>
                   </td>
                   <td>
                     <% if document.send_status == false %>
-                      <%= link_to "削除する", document_path(document.id),method: :delete, "data-confirm" => "本当に消しますか？" %>
+                      <%= link_to "", document_path(document.id), class:"glyphicon glyphicon-trash", style:"text-decoration: none;", method: :delete, "data-confirm" => "書類を削除しますか？" %>
                     <% else %>
-                      <span>削除できません</span>
+                      <span>削除不可</span>
                     <% end %>
                   </td>         
           			</tr>
@@ -92,7 +96,7 @@
           </table>
         <% end %>
 
-        <h3>受信書類一覧ページ(新着順)</h3>
+        <h3>受信書類一覧</h3>
         <% if @received_documents.empty? %>
               <h3>該当なし</h3>
         <% else %>

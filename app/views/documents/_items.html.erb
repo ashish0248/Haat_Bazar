@@ -1,14 +1,14 @@
-<div>
+<div style="margin:20px">
   <%= form_for(item_new, url: items_path(item_new.id), remote: true) do |f| %>
     <%= f.hidden_field :document_id %>
     <%= f.label :商品名 %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, style:"width: 300px;" %><br>
     <%= f.label :数量 %>
-    <%= f.text_field :number %><br>
+    <%= f.text_field :number, style:"width: 300px;" %><br>
     <%= f.label :単位 %>
-    <%= f.text_field :unit %><br>
+    <%= f.text_field :unit, style:"width: 300px;" %><br>
     <%= f.label :単価 %>
-    <%= f.text_field :price %><br>
+    <%= f.text_field :price, style:"width: 300px;" %><br>
     <%= f.submit '商品の追加' %>
   <% end %>
 </div>
@@ -16,7 +16,12 @@
 <table class="table">
     <thead>
       <tr>
-        <th style="width:4em;text-align:right;"></th><th>品名</th><th style="width:4em;text-align:right;">数量</th><th style="width:4em;">単位</th><th style="text-align:right;">単価</th><th style="text-align:right;">金額(円)</th>
+        <th style="width:4em;text-align:right;"></th>
+        <th>品名</th>
+        <th style="width:4em;text-align:right;">数量</th>
+        <th style="width:4em;">単位</th>
+        <th style="text-align:right;">単価</th>
+        <th style="text-align:right;">金額(円)</th>
       </tr>
     </thead>
 
