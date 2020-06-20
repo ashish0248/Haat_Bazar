@@ -2,11 +2,11 @@
 <% count = 0 %>
 <% tag_list.each do |tag| %>
 	<% if count == 2 %>
-		<br>
+		<br><br>
 		<% count = 0 %>
 	<% end %>
 	<%= link_to homes_path(tag_name: tag), style:"text-decoration: none;" do %> 
-   		<span style=" color: black; background-color: #f7f7f8; border: solid 1px;  padding: 2px 5px; border-radius: 8px;"><%= tag %></span>
+   		<span style=" color: #696969; background-color: #f7f7f8; border: solid 1px; padding: 2px 5px; border-radius: 8px;"><%= tag %></span>
    	<% end %>
    	<% count = count + 1 %>
 <% end %>

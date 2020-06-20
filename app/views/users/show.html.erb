@@ -67,8 +67,9 @@
 						<!-- 改行なども行ってくれるhelper -->
 						<%= simple_format photo.introduction %>
 						<% if @user == current_user %>
-							<%= link_to "編集する", edit_photo_path(photo.id), class: "btn btn-danger" %>
-							<%= link_to "削除する", photo_path(photo.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+							<%= link_to "編集する", edit_photo_path(photo.id), class: "glyphicon glyphicon-pencil", style:"text-decoration: none;" %><br>
+
+							<%= link_to "削除", photo_path(photo.id), style:"text-decoration: none;", method: :delete, "data-confirm" => "投稿を削除しますか？", class: "glyphicon glyphicon-trash " %><br>
 						<% end %>
 					<% end %>
 		    	</div>

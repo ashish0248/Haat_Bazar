@@ -43,7 +43,11 @@ class User < ApplicationRecord
    def active_for_authentication?
     super && (self.user_status == true)
    end
+
  
+  def full_info
+    "お名前:" + self.name + "　担当者:" + self.staff + "　住所:"+self.address
+  end
   # フォロー機能用
   def follow(other_user)
     # 同一事物ではないか？

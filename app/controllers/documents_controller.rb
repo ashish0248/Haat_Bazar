@@ -64,8 +64,8 @@ class DocumentsController < ApplicationController
   def edit
   	@document = Document.find(params[:id])
     
-    #編集できるのは作った本人だけ
-    if @document.maker_id == current_user.id
+    #編集できるのは作った本人かつ未送信のものだけ
+    if @document.maker_id == current_user.id and @document.send_status == false
       #別テーブルの商品の取得
     	@items = Item.where(document_id: @document.id)
     	@item_new = Item.new(document_id: @document.id)
@@ -100,17 +100,36 @@ class DocumentsController < ApplicationController
   	@document = Document.find(params[:id])
   	@items = Item.where(document_id: @document.id)
 
-     #pdf化
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "書類",
-               layout: 'layouts/pdf_layouts.html',
-               template: 'documents/show.html.erb',
-               encording: 'UTF-8',
-               page_size: 'A4'
+    if @document.maker_id == current_user.id
+      #書類を作成した本人
+         #pdf化
+        respond_to do |format|
+          format.html
+          format.pdf do
+            render pdf: "書類",
+                   layout: 'layouts/pdf_layouts.html',
+                   template: 'documents/show.html.erb',
+                   encording: 'UTF-8',
+                   page_size: 'A4'
 
-      end
+          end
+        end
+    elsif @document.receiver_id == current_user.id and @document.send_status == true
+      #書類を受信した人
+        #pdf化
+        respond_to do |format|
+          format.html
+          format.pdf do
+            render pdf: "書類",
+                   layout: 'layouts/pdf_layouts.html',
+                   template: 'documents/show.html.erb',
+                   encording: 'UTF-8',
+                   page_size: 'A4'
+
+          end
+        end
+    else
+      redirect_to documents_path
     end
   end
 

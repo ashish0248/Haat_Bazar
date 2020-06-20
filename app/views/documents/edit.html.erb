@@ -13,8 +13,13 @@
       		<span>請求書</span>
       	<% end %>
       </h1>
+
+
+      <div id="item">
+	  	<%= render 'documents/items', items: @items, item_new: @item_new %>
+	  </div>      
       <%= form_for(@document, url: document_path(@document.id), html: { id: :edit_document}) do |f| %>
-	      <div class="row">
+	      <div class="row">	      	
 	        <div class="col-md-7 col-xs-7">
 	          <h2><%= f.text_field :receiver_name %>　様</h2>
 	          〒<span><%= f.text_field :receiver_postal_code %></span><br>
@@ -48,20 +53,14 @@
 	      <div>
 	        <% if @document.document_status == '4' %>
 	            <h4>振込先</h4>
-	            	<%= f.text_area :payee %>
+	            	<%= f.text_area :payee, :size=>"60x5" %>
 	        <% end %>
 	      	<h4>備考</h4>
-	           <%= f.text_area :remark %>
+	           <%= f.text_area :remark, :size=>"60x5" %>
 	      </div>
-	      
+
+	      <%= f.submit 'プレビュー' %>
       <% end %>
-
-      <div id="item">
-	  	<%= render 'documents/items', items: @items, item_new: @item_new %>
-	  </div>
-
-	     <!-- javaでsubmitを行う -->
-	    <input type="button" id="b1" value="プレビュー" onclick="test1()">
 
     </div>
 </body>
