@@ -16,12 +16,12 @@
             <%= link_to 'Haat Bazar', root_path, style:"text-decoration: none; color: white" %>
           </div>
          <ul class="nav navbar-nav" style="font-size: 16px; margin-right: 50px">
-          <!-- 会員ログイン後 -->
+          <!-- ログイン後 -->
           <% if user_signed_in? %>
-            <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>          
+            <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>     
             <li class="header-list">
               <% if unchecked_notifications.any? %>
-                <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: yellow", class:"glyphicon glyphicon-bell" %>
+                <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: white;", class:"glyphicon glyphicon-bell" %>
               <% else %>
                  <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: white" %>
               <% end %>
@@ -44,7 +44,7 @@
                   </ul>
                </div>
             </li>
-            <li class="header-list"><%= link_to "Users", homes_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list float" ><%= link_to "Users", homes_path, style:"text-decoration: none; color: white"%></li>
             <li class="header-list"><%= link_to "Logout", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: white" %></li>
 
           <!-- 非ログイン -->

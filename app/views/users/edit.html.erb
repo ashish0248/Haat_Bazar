@@ -125,7 +125,7 @@
                      <%= f.label :フェイスブック（URL）%>
                   </th>
                   <td>
-                    <%= f.text_field :instagram, autofocus: true %>
+                    <%= f.text_field :facebook, autofocus: true %>
                   </td>
                 </tr>
 
@@ -136,28 +136,7 @@
                   <td>
                     <%= f.text_field :homepage, autofocus: true %>
                   </td>
-                </tr>  
-
-                 <tr>
-                  <th>
-                    <%= f.label :password %><span style="color: red">必須</span>
-                  </th>
-                  <td>
-                    <% if @minimum_password_length %>
-                      <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br>
-                    <%= f.password_field :password, autocomplete: "new-password" %>
-                  </td>
-                </tr>
-
-                <tr>
-                  <th>
-                     <%= f.label :password_confirmation %><span style="color: red">必須</span><br>
-                  </th>
-                  <td>
-                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                  </td>
-                </tr>  
+                </tr> 
 
               </thead>
             </table>

@@ -18,7 +18,7 @@
 
 								<td>
 									<%= link_to user_path(following_user.id) do %>
-										<%= attachment_image_tag(following_user, :profile_image, :fill, 50, 50 ) %>
+										<%= attachment_image_tag(following_user, :profile_image, :fill, 80, 80 ) %>
 										
 									<% end %>
 									</td>
@@ -51,7 +51,7 @@
 							<tr>
 								<td>
 									<%= link_to user_path(followed_user.id) do %>
-										<%= attachment_image_tag(followed_user, :profile_image, :fill, 50, 50 ) %>
+										<%= attachment_image_tag(followed_user, :profile_image, :fill, 80, 80 ) %>
 									<% end %>
 								</td>
 								<td><%= followed_user.name %><br>

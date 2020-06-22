@@ -18,6 +18,7 @@
 //= require_tree .
 //= require jquery.jpostal
 
+//アニメーション用
 $(window).scroll(function() {
  　　// .animation 配下の　.anm_modを対象に見る
  $(".animation .anm_mod").each(function() {
@@ -34,4 +35,19 @@ $(window).scroll(function() {
   }
  });
 });
+
+//ヘッダー用
+var startPos = 0,winScrollTop = 0;
+$(window).on('scroll',function(){
+    winScrollTop = $(this).scrollTop();
+    if (winScrollTop >= startPos) {
+        if(winScrollTop >= 300){
+            $('.header').addClass('hide');
+        }
+    } else {
+        $('.header').removeClass('hide');
+    }
+    startPos = winScrollTop;
+});
+
 
