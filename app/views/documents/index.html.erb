@@ -70,14 +70,14 @@
                     <% end %>
           				</td>
           				<td>
-          					<%= link_to '表示',  document_path(document.id) %>
+          					<%= link_to '表示',  document_path(document.id), style:"text-decoration: none;" %>
           				</td>
                   <td>
-                    <%= link_to 'pdfで表示',  document_path(format: :pdf, id: document.id), :target=>["_blank"] %>
+                    <%= link_to 'pdfで表示',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>
                   </td>
                   <td>
                     <% if document.send_status == false %>
-                      <%= link_to '送信する',  document_path(document.id, status: 1), send_status:true, method: :patch, "data-confirm" => "本当に送信しますか？書類の編集及び削除はできなくなります" %>
+                      <%= link_to '送信する',  document_path(document.id, status: 1), style:"text-decoration: none;", send_status:true, method: :patch, "data-confirm" => "本当に送信しますか？書類の編集及び削除はできなくなります" %>
                     <% else %>
                       <span>送信済みです</span>
                     <% end %>
@@ -140,10 +140,10 @@
                         <%= document.receipt_number %>
                       </td>             
                       <td>
-                        <%= link_to '表示',  document_path(document.id) %>
+                        <%= link_to '表示',  document_path(document.id), style:"text-decoration: none;" %>
                       </td>
                       <td>
-                        <%= link_to 'pdf',  document_path(format: :pdf, id: document.id), :target=>["_blank"] %>
+                        <%= link_to 'pdf',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>
                       </td>    
                     </tr>
                   <% end %>

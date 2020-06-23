@@ -14,11 +14,14 @@
 				<div class="row">
 
 					<div class="col-xs-4">
-					<%= link_to "退会しない", users_path, class: "btn btn-primary", style:"text-decoration: none; color: white" %>
+					<button style="font-size: 10px;">
+						<%= link_to "退会しない", users_path,style:"text-decoration: none; color: white" %>
+					</button>
 					</div>
 
 					<%= form_for(@user, url: user_path(current_user.id)) do |f| %>
 					  <%= f.hidden_field :user_status, :value => false %>
+
 					  <%= f.submit '退会する',data: {"turbolinks" => false} %>
 					  <!-- confirmは最後にもってくる -->
 					<% end %>

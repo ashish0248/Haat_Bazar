@@ -13,7 +13,7 @@
     <!-- ヘッダー部分 -->
       <nav class="header">
            <div class="header-rogo">
-            <%= link_to 'Haat Bazar', root_path, style:"text-decoration: none; color: white" %>
+            <%= link_to 'Haat Bazar', root_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
           </div>
          <ul class="nav navbar-nav" style="font-size: 16px; margin-right: 50px">
           <!-- ログイン後 -->
@@ -48,10 +48,10 @@
             <li class="header-list"><%= link_to "Logout", destroy_user_session_path, method: :delete, style:"text-decoration: none; color: white" %></li>
 
           <!-- 非ログイン -->
-          <% else %>
-            <li class="header-list"><%= link_to "Sign up",  root_path(anchor: 'user_new'), style:"text-decoration: none; color: white;", data: {"turbolinks" => false} %></li>            
+          <% else %>   
             <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>
             <li class="header-list"><%= link_to "Users", homes_path, style:"text-decoration: none; color: white" %></li>
+            <li class="header-list"><%= link_to "Sign up",  root_path(anchor: 'user_new'), style:"text-decoration: none; color: white;", data: {"turbolinks" => false} %></li>                     
             <li class="header-list"><%= link_to "Login", new_user_session_path, style:"text-decoration: none; color: white" %></li>
             <li class="header-list"><%= link_to "Contact",  new_home_path, style:"text-decoration: none; color: white" %></li>            
 
@@ -62,7 +62,7 @@
     <%= yield %>
     <!-- フッター部分 -->
     <footer>
-      <span style="font-size: 15px">Copycat (C) Copycat. All Rights Reserved.</span>
+      <span style="font-size: 15px; margin-top: 10px;">2020  HaatBazar &copy; ashish  All rights reserved</span>
     </footer>
   </body>
 </html>

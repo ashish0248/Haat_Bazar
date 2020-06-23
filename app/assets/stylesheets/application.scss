@@ -74,6 +74,9 @@ body{
   text-align: center;
   margin-top: 10px;
 }
+.header-user{
+  color: white;
+}
 
 .header-list{
   margin-left: 210px;
@@ -126,10 +129,27 @@ body{
 
 /*topページ*/
 .top-image {
-  background-image: image-url("top.jpeg");
   height:950px;
   width: auto;
-  background-size:cover;
+}
+.top-image_1 {
+background-image: image-url("top.jpeg");
+}
+.top-image_2 {
+background-image: image-url("top_2.jpg");
+}
+
+.absolute_comment_1{
+    position:  absolute;
+    padding:  20px;
+    left:  1000px;
+    top: 300px;
+}
+.absolute_comment_2{
+    position:  absolute;
+    padding:  20px;
+    left:  300px;
+    top: 300px;
 }
 
 .shadow{
@@ -178,12 +198,6 @@ body{
 }
 
 /*aboutページ*/
-.about-image {
-  background-image: image-url("about.jpeg");
-  height:950px;
-  width: auto;
-  background-size:cover;
-}
 
 
 /*user一覧ページ*/
