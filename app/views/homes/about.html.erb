@@ -1,0 +1,62 @@
+<div class="body">
+    <div class="container">
+		<div style="margin: 200px">
+			<h1>Haat Bazarとは</h1>
+            <h3>『作り手』と『お店』をつなぐB to Bの卸売専用サイト</h3>
+		</div>
+        <div class="animation">
+    		<div class="row">
+    			<div class="col-xs-6 shadow" style="margin-bottom: 25px;">
+    				<h2 style="border-bottom: solid 1px; margin-bottom: 15px;">作り手</h2>
+                    <h4><strong>利用して欲しい人</strong></h4>
+                    <p>・お店に商品を卸したい『作り手』（個人作家・工房など）</p>
+                    <p>・B to Bへの展開を考えている『作り手』</p>
+                    <p>・これから自分の作品を売り出したい思っている『作り手』</p><br>
+                    <h4><strong>このサイトでできること</strong></h4>
+                    <p>・作り手のイメージや作品をお店に売り込み、新たな販路をさがす</p>
+                    <p>・作り手自身の紹介サイトとしての利用</p>
+                    <p>・自身が気になったお店に新たな作品を提案</p><br>           
+    			</div>
+    			<div class="col-xs-6 anm_mod right delay" style="margin: 50px 0 70px 0;">
+    				<%= image_tag asset_path("about_1.jpeg"), :size =>'550x350' %>
+    			</div>
+
+        		<div class="col-xs-6 anm_mod left delay" style="margin-top: 50px;">
+        			<%= image_tag asset_path("about_2.jpeg"), :size =>'550x380' %>
+        		</div>
+        		<div class="col-xs-6 shadow" style="margin-bottom: 10px;">
+        			<h2 style="border-bottom: solid 1px; margin-bottom: 25px;">お 店</h2>
+                    <h4><strong>利用して欲しい人</strong></h4>
+                    <p>・新たな仕入れ先を探している『お店』（店舗・webショップ)</p>
+                    <p>・イベントに合わせた作り手を探している『お店』</p>
+                    <p>・これから自分の『お店』を持ちたい人</p><br>
+                    <h4><strong>このサイトでできること</strong></h4>
+                    <p>・自分のお店に合う作家を探して交渉</p>
+                    <p>・お店のテーマやイベントにあった作品を作ってもらう</p>
+                    <p>・商品の買い付け</p><br>
+        		</div>
+                <div class="col-xs-6 shadow" style=" margin-top:50px;">
+                    <h2 style="border-bottom: solid 1px; margin-bottom: 25px;">Feature</h2>
+                    <h4><strong>書類の作成</strong></h4>
+                    <p>・書類（見積書・発注書・納品書・請求書)の作成が簡単にできます</p>
+                    <p>・作成した書類をpdf化してダウンロードすることができます</p>
+                    <p>・書類の送受信をサイト内で行うことができます</p><br>
+                    <h4><strong>ダイレクトメッセージ</strong></h4>
+                    <p>・ユーザをフォローすることでダイレクトメッセージを送ることが可能となります</p>
+                    <p>・画像の送受信が可能でデザインなど細やかなところまで共有できます</p><br>
+                    <h4><strong>通知機能</strong></h4>
+                    <p>・自分宛に書類が送信されたりダイレクトメッセージが届いた場合は通知機能でお知らせします</p><br>
+                </div> 
+                <div class="col-xs-6 anm_mod right delay" style="margin-top: 100px">
+                    <%= image_tag asset_path("about_3.jpg"), :size =>'600x450' %>
+                </div>
+
+                <div class="col-xs-12" style="text-align: center; margin: 100px 0;">
+                    <%= link_to root_path(anchor: 'user_new'), style:"text-decoration: none; color: black", data: {"turbolinks" => false} do %>
+                        <h3 style="border-bottom: solid 1px;">新規登録ページへ</h3>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>

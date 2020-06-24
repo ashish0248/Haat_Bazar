@@ -28,10 +28,19 @@ class ChatMessagesController < ApplicationController
 	  	end
 	  	#すでにあるメッセージの取得
 	  	# 10件ずつ増やす
-	  	if params[:count]
+	  	@sum = ChatMessage.where(chat_room_id: @chat_room.id).count
+	  	if params[:count] and @sum < params[:count].to_i
+	  		#これ以上表示するものがない場合
 	  		@count = params[:count]
 	  		@count = @count.to_i + 10
 	  		@chat_messages = ChatMessage.where(chat_room_id: @chat_room.id).last(@count)
+	  		@sum = 0
+	  	elsif params[:count]
+	  		#まだ表示するものがある場合
+	  		@count = params[:count]
+	  		@count = @count.to_i + 10
+	  		@chat_messages = ChatMessage.where(chat_room_id: @chat_room.id).last(@count)
+	  		@sum = 1
 	  	else
 	  		# 最初は10件表示
 	  		@count = 10

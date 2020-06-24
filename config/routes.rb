@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/' => 'homes#top', as: 'root'
   get 'homes/search'
   get 'homes/about'
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
 
   #usersコントローラー
   get 'users/leave'

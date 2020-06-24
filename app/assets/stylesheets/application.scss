@@ -46,20 +46,29 @@ body{
   background-color: #EEEEEF;
   color: black;
   font-family: 'mintyo';
+
+  position: relative;
+  padding-bottom: 50px;
 }
 
 .body {
   margin-top: 150px;
   color: #696969;
+  margin-bottom: 50px;
 }
 
 /*ヘッダー*/
+
 .header{
   position: fixed;
   width: 100%;
   background-color: rgba( 0, 0, 0, 0.5);
   margin-bottom: 50px;
   z-index: 100;
+  transition: .5s;
+}
+.header.hide{
+    transform: translateY(-100%);
 }
 
 .header-rogo{
@@ -69,14 +78,27 @@ body{
   text-align: center;
   margin-top: 10px;
 }
+.header-user{
+  color: white;
+}
 
 .header-list{
-  margin-left: 210px
+  margin-left: 210px;
 }
 
 .dropdown:hover > .dropdown-menu{
   display: block;
 }
+
+.nav > li > a:hover {
+  background-color: transparent;
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+  border-bottom: solid 1px
+}
+
+
 
 
 /*アニメーション*/
@@ -112,12 +134,32 @@ body{
 
 /*topページ*/
 .top-image {
-  background-image: image-url("top.jpeg");
   height:950px;
   width: auto;
-  background-size:cover;
+}
+.top-image_1 {
+background-image: image-url("top.jpeg");
+}
+.top-image_2 {
+background-image: image-url("top_2.jpg");
 }
 
+.absolute_comment_1{
+    position:  absolute;
+    padding:  20px;
+    left:  1000px;
+    top: 270px;
+}
+.absolute_comment_2{
+    position:  absolute;
+    padding:  20px;
+    left:  300px;
+    top: 270px;
+}
+
+.shadow{
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
 .recommend_user {
 	float: left;
   margin-left: 3%;
@@ -153,24 +195,35 @@ body{
   color: black;
 }
 
+.absolute_news {
+    position:  absolute;
+    padding:  20px;
+    left:  450px;
+    top: 1040px;
+}
+
+/*aboutページ*/
+
 
 /*user一覧ページ*/
 .individual {
   float:left;
   margin: 20px 60px 0 10px;
   width: 500px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
 .introduce{
   float:left;
 }
 
-.wrapper {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 120px;
-}
 
+.info{
+  margin-top: 200px;
+  height: 150px;
+  border-top: solid 1px;
+  background-color: white
+}
 footer {
   margin-bottom: 0;
   width: 100%;
@@ -182,8 +235,5 @@ footer {
   position: absolute;
   bottom: 0;
 }
-
-
-
 
 

@@ -1,4 +1,4 @@
-<body>
+<div class="body">
     <div class="container">
       <h1 style="text-align:center;">
       	<!-- 書類の種類の判定 -->
@@ -23,7 +23,7 @@
 	        <div class="col-md-7 col-xs-7">
 	          <h2><%= f.text_field :receiver_name %>　様</h2>
 	          〒<span><%= f.text_field :receiver_postal_code %></span><br>
-	          <span><%= f.text_field :receiver_address %></span><br>
+	          住所:<span><%= f.text_field :receiver_address %></span><br>
 	          TEL:<span><%= f.text_field :receiver_phone_number %></span><br>
 	          担当者:<span><%= f.text_field :receiver_staff %></span>様
 	        </div>
@@ -39,7 +39,7 @@
 	          書類番号 <span><%= f.text_field :receipt_number %></span>
 	          <h3><%= f.text_field :maker_name %></h3>
 	          〒<%= f.text_field :maker_postal_code %><br>
-	          <%= f.text_field :maker_address %><br>
+	          住所:<%= f.text_field :maker_address %><br>
 	          TEL: <%= f.text_field :maker_phone_number %><br>
 	          担当者: <%= f.text_field :maker_staff %><br>
 	        </div>
@@ -59,8 +59,8 @@
 	           <%= f.text_area :remark, :size=>"60x5" %>
 	      </div>
 
-	      <%= f.submit 'プレビュー' %>
+	      <%= f.submit '書類作成', style:"width: 20%;margin: 10px 0 0 40%" %>
       <% end %>
 
     </div>
-</body>
+</div>

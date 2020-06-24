@@ -64,7 +64,7 @@
                     <%= f.label :タグ（カンマで区切ってください） %>
                   </th>
                   <td>
-                    <%= f.text_field :tag_list, value: resource.tag_list.join(',') %>
+                    <%= f.text_field :tag_list, value: resource.tag_list.join(','), placeholder:"例）手作り,小物,クリスマス" %>
                   </td>
                 </tr>
 
@@ -113,29 +113,29 @@
 
                 <tr>
                   <th>
-                    <%= f.label :インスタグラム（URL）%>
+                    <%= f.label :インスタグラム%>
                   </th>
                   <td>
-                    <%= f.text_field :instagram, autofocus: true %>
+                    <%= f.text_field :instagram, autofocus: true, placeholder:"URL" %>
                   </td>
                 </tr>   
 
 
                 <tr>
                   <th>
-                     <%= f.label :フェイスブック（URL）%>
+                     <%= f.label :フェイスブック%>
                   </th>
                   <td>
-                    <%= f.text_field :instagram, autofocus: true %>
+                    <%= f.text_field :instagram, autofocus: true, placeholder:"URL" %>
                   </td>
                 </tr>
 
                 <tr>
                   <th>
-                    <%= f.label :ホームページ（URL）%>
+                    <%= f.label :ホームページ%>
                   </th>
                   <td>
-                    <%= f.text_field :homepage, autofocus: true %>
+                    <%= f.text_field :homepage, autofocus: true, placeholder:"URL" %>
                   </td>
                 </tr>  
 

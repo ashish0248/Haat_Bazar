@@ -1,23 +1,66 @@
 
-    	<div class="top-image">
-    		
-    	</div>
+<div id="theTarget" class="top-image">
+	<div class="top-image_1">
+		<h2 class="absolute_comment_1"><strong>「作り手」と「お店」をつなぐ</strong></h2>
+	</div>
+    <div class="top-image_2">
+		<h2 class="absolute_comment_2" style="color:white;"><strong>「お店」と「作り手」をつなぐ</strong></h2>
+    </div>
+</div>
+
 <div class="body">
-
+    <div class="container">
     	<div class="row">
-    	<div class="container">
-	    	<div class="clearfix animation">
 
-	    		<h3 style="border-bottom: solid 1px">おすすめの作り手</h3><br>
+    		<div class="shadow" style="margin-left: 10%; width: 60%">
+    			<h2 class="absolute_news" ><strong>NEWS　›</strong></h2>
+    			<div style="background-color: #f5f5f5; padding: 30px;">
+    				<ul style="list-style: none;">
+    					<table>
+    						<tbody>
+    							<tr>
+
+    								<td>EVENT</td>
+    								<td>2020/06/07</td>
+    								<td>新規登録者応援キャンペーンについて</td>
+    							</tr>
+    							<tr>
+
+    								<td>EVENT</td>
+    								<td>2020/04/08</td>
+    								<td>第3回Haat Bazar交流会開催のお知らせ</td>
+    							</tr>
+    							<tr>
+
+    								<td>INFO</td>
+    								<td>2020/01/07</td>
+    								<td>アップデートのお知らせ</td>
+    							</tr>
+    							<tr>
+
+    								<td>EVENT</td>
+    								<td>2019/010/07</td>
+    								<td>第2回Haat Bazar交流会開催の報告</td>
+    							</tr>    							    							    							
+    						</tbody>
+    					</table>
+    				</ul>
+    			</div>
+    		</div>
+
+	    	<div class="clearfix animation">
+	    		<h3 style="border-bottom: solid 1px; margin-top: 150px">おすすめの作り手</h3><br>
 	    		<!-- 新着4人のみ載せる -->
 	    		<% count = 0 %>
 		    	<% @user_makers.each do |user_maker| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="recommend_user anm_mod  left delay">
-								<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
-					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
-					        <% end %><br>
+							<div class="recommend_user">
+								<div style="padding:1px; border: solid 1px;">
+									<%= link_to user_path(user_maker.id), style:"padding: 1px", data: {"turbolinks" => false} do %>
+					            		<%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
+					        		<% end %><br>
+					        	</div>
 					        <span><%= user_maker.name %></span>
 							</div>
 					    </div>
@@ -32,10 +75,12 @@
 		    	<% @user_shops.each do |user_shop| %>
 		    		<% if count < 4 %>
 						<div>
-							<div class="recommend_user anm_mod right delay">
-								<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
-					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
-					        <% end %><br>
+							<div class="recommend_user">
+								<div style="padding:1px; border: solid 1px;">
+									<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
+					            		<%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
+					        		<% end %><br>
+					        	</div>
 					        <span><%= user_shop.name %></span>
 							</div>
 					    </div>
@@ -44,35 +89,48 @@
 				<% end %>
 	    	</div>
       	</div>
-
-		    <div class="container">
-		       <div class="row" id="user_new">
-		       	<div class="animation">
-					<div class="registration-image anm_mod fast" style="margin-top: 130px;" >
-			          <!-- 作り手側 -->
-			           	<div class="col-xs-6">
-			           		<!-- そのまま新規登録画面へ -->
-			              <div class="registration-maker anm_mod right delay">
-			                <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-			                <p>・より多くのお店との出会えます<br>・制作の依頼が来るかも</p>
-			              </div>
-			           	</div>
-			           	<!-- お店側 -->
-			           	<div class="col-xs-6"> 
-			           		<!-- user_makerをfalseにする -->
-			              <div class="registration-shop anm_mod left delay">
-			                <p>・多数の作り手との出会えます <br> ・お店オリジナルの商品を依頼できます</p> 
-			              	<%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
-			              </div>
-			           	</div>
-			        </div>
-
-		        </div>
-		       </div>
-		    </div>
-		<div style="margin: 400px">
-				
-		</div>	
-
     </div>
+	<div class="container">
+		<div class="row" id="user_new">
+			<div class="animation">
+				<div class="registration-image anm_mod fast" style="margin-top: 130px;" >
+			      <!-- 作り手側 -->
+			       	<div class="col-xs-6">
+			       		<!-- そのまま新規登録画面へ -->
+			          <div class="registration-maker anm_mod right delay shadow">
+			            <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
+			            <p>・新たなお店との出会いをさがす<br>・お店側からの制作の依頼</p>
+			          </div>
+			       	</div>
+			       	<!-- お店側 -->
+			       	<div class="col-xs-6"> 
+			       		<!-- user_makerをfalseにする -->
+			          <div class="registration-shop anm_mod left delay shadow">
+			            <p>・新たな作り手との出会いをさがす <br> ・お店オリジナルの商品を依頼</p> 
+			          	<%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
+			          </div>
+			       	</div>
+			    </div>
+			</div>
+		</div>
+	</div>
 </div>
+<div class="info">
+	<div class="clearfix" style="padding: 0 0 20px 30%;">
+		<div style="float:left;">
+			<h3>Haat Bazar</h3>
+			<h5><%= link_to "・Haat Bazarについて", homes_about_path, style:"text-decoration: none; color: black; margin-top:10px;" %></h5>
+			<h5><%= link_to "・ユーザー一覧", homes_path, style:"text-decoration: none; color: black"%></h5>				
+			<h5><%= link_to "・お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></h5>
+		</div>
+		<div style="float:left; margin-top: 25px;">
+			<span>「作り手」と「お店」をつなぐ</span>
+		</div>
+		<div style="float:left; margin: 20px 100px">
+			<%= image_tag asset_path("instagram_image.jpeg"), :size =>'20x20' %>		
+			<%= link_to 'https://www.facebook.com/DMMWEBCAMP/', style:"text-decoration: none; color: black", :target=>["_blank"] do %>
+				<%= image_tag asset_path("facebook_image.jpg"), :size =>'20x20' %>
+			<% end %>
+		</div>
+	</div>
+</div>	

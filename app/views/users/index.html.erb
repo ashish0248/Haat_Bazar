@@ -72,28 +72,25 @@
 						<tr>
 			                <th>Instagram</th>
 			                <td>
-			                	<%= link_to @user.instagram, style:"text-decoration: none; color: black" do %>
-								    <%= image_tag asset_path("instagram_image.jpeg"), :size =>'50x50' %>
+			                	<%= link_to @user.instagram, :target=>["_blank"] do %>
+								    <%= @user.instagram %>
 								<% end %>			                	
-			                	<%= @user.instagram %>
 							</td>
 						</tr>
 						<tr>
 			                <th>FaceBook</th>
 			                <td >
-								<%= link_to @user.facebook, style:"text-decoration: none; color: black" do %>
-									<%= image_tag asset_path("facebook_image.jpg"), :size =>'50x50' %>
-								<% end %>		 
-								<%= @user.facebook %>               	
+								<%= link_to @user.facebook, :target=>["_blank"] do %>
+									<%= @user.facebook %>   
+								<% end %>            	
 			                </td>
 						</tr>
 						<tr>
 							<th>Homepage</th>
 			                <td>
-								<%= link_to @user.homepage, style:"text-decoration: none; color: black" do %>
-									<%= image_tag asset_path("homepage_image.png"), :size =>'50x50' %>
+								<%= link_to @user.homepage, :target=>["_blank"] do %>
+									<%= @user.homepage %>
 								<% end %>
-								<%= @user.homepage %>
 			                </td>
 						</tr>
 				</thead>
