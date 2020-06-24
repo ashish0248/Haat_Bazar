@@ -1,10 +1,10 @@
 
 <div id="theTarget" class="top-image">
 	<div class="top-image_1">
-		<h2 class="absolute_comment_1"><strong>「作り手」と「お店」を繋ぐ</strong></h2>
+		<h2 class="absolute_comment_1"><strong>「作り手」と「お店」をつなぐ</strong></h2>
 	</div>
     <div class="top-image_2">
-		<h2 class="absolute_comment_2" style="color:white;"><strong>「お店」と「作り手」を繋ぐ</strong></h2>
+		<h2 class="absolute_comment_2" style="color:white;"><strong>「お店」と「作り手」をつなぐ</strong></h2>
     </div>
 </div>
 
@@ -56,9 +56,11 @@
 		    		<% if count < 4 %>
 						<div>
 							<div class="recommend_user">
-								<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
-					            <%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
-					        <% end %><br>
+								<div style="padding:1px; border: solid 1px;">
+									<%= link_to user_path(user_maker.id), style:"padding: 1px", data: {"turbolinks" => false} do %>
+					            		<%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
+					        		<% end %><br>
+					        	</div>
 					        <span><%= user_maker.name %></span>
 							</div>
 					    </div>
@@ -74,9 +76,11 @@
 		    		<% if count < 4 %>
 						<div>
 							<div class="recommend_user">
-								<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
-					            <%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
-					        <% end %><br>
+								<div style="padding:1px; border: solid 1px;">
+									<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
+					            		<%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
+					        		<% end %><br>
+					        	</div>
 					        <span><%= user_shop.name %></span>
 							</div>
 					    </div>
@@ -110,8 +114,23 @@
 			</div>
 		</div>
 	</div>
-	<div style="margin-top: 200px; border-top: solid 1px;">
-		
-				
-	</div>	
 </div>
+<div class="info">
+	<div class="clearfix" style="padding: 0 0 20px 30%;">
+		<div style="float:left;">
+			<h3>Haat Bazar</h3>
+			<h5><%= link_to "・Haat Bazarについて", homes_about_path, style:"text-decoration: none; color: black; margin-top:10px;" %></h5>
+			<h5><%= link_to "・ユーザー一覧", homes_path, style:"text-decoration: none; color: black"%></h5>				
+			<h5><%= link_to "・お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></h5>
+		</div>
+		<div style="float:left; margin-top: 25px;">
+			<span>「作り手」と「お店」をつなぐ</span>
+		</div>
+		<div style="float:left; margin: 20px 100px">
+			<%= image_tag asset_path("instagram_image.jpeg"), :size =>'20x20' %>		
+			<%= link_to 'https://www.facebook.com/DMMWEBCAMP/', style:"text-decoration: none; color: black", :target=>["_blank"] do %>
+				<%= image_tag asset_path("facebook_image.jpg"), :size =>'20x20' %>
+			<% end %>
+		</div>
+	</div>
+</div>	

@@ -46,11 +46,15 @@ body{
   background-color: #EEEEEF;
   color: black;
   font-family: 'mintyo';
+
+  position: relative;
+  padding-bottom: 50px;
 }
 
 .body {
   margin-top: 150px;
   color: #696969;
+  margin-bottom: 50px;
 }
 
 /*ヘッダー*/
@@ -93,6 +97,7 @@ body{
   transform: translateY(-10px);
   border-bottom: solid 1px
 }
+
 
 
 
@@ -143,13 +148,13 @@ background-image: image-url("top_2.jpg");
     position:  absolute;
     padding:  20px;
     left:  1000px;
-    top: 300px;
+    top: 270px;
 }
 .absolute_comment_2{
     position:  absolute;
     padding:  20px;
     left:  300px;
-    top: 300px;
+    top: 270px;
 }
 
 .shadow{
@@ -212,12 +217,13 @@ background-image: image-url("top_2.jpg");
   float:left;
 }
 
-.wrapper {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 120px;
-}
 
+.info{
+  margin-top: 200px;
+  height: 150px;
+  border-top: solid 1px;
+  background-color: white
+}
 footer {
   margin-bottom: 0;
   width: 100%;

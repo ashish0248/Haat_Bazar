@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body  class="wrapper">
+  <body>
     <!-- ヘッダー部分 -->
       <nav class="header">
            <div class="header-rogo">
@@ -21,7 +21,9 @@
             <li class="header-list"><%= link_to "About us", homes_about_path, style:"text-decoration: none; color: white" %></li>     
             <li class="header-list">
               <% if unchecked_notifications.any? %>
-                <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: white;", class:"glyphicon glyphicon-bell" %>
+                <%= link_to notifications_path, style:"text-decoration: none; color: white;" do %>
+                  <span class="glyphicon glyphicon-bell" style="color:red"></span>Notice
+                <% end %>
               <% else %>
                  <%= link_to 'Notice', notifications_path, style:"text-decoration: none; color: white" %>
               <% end %>
@@ -29,7 +31,6 @@
             <li class="header-list">
               <div class="dropdown" style=" margin-top: 15px">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; color: white">My page</a>
-
                   <ul class="dropdown-menu">
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
@@ -62,7 +63,9 @@
     <%= yield %>
     <!-- フッター部分 -->
     <footer>
-      <span style="font-size: 15px; margin-top: 10px;">2020  HaatBazar &copy; ashish  All rights reserved</span>
+      <div style="margin:15px">
+        <span style="font-size: 15px;">2020  HaatBazar &copy; ashish  All rights reserved</span>
+      </div>
     </footer>
   </body>
 </html>

@@ -41,7 +41,7 @@
 		    			<!--　ドラッグ・ドロップ用 -->
 		    			<div style="margin: 50px 0">
 		    				<% if @user == current_user %>
-		    					<h4>ドラッグで並び替え</h4>
+		    					<h4>ドラッグで記事の並び替え</h4>
 		    					<%= link_to '更新', user_path(@user.id), style:"text-decoration: none; color: black; background-color: #f7f7f8; border: solid 1px;  padding: 2px 5px; border-radius: 8px;", data: {"turbolinks" => false}  %>
 			    				<ul id="sortable_list">
 								  <% @photos.each do |photo| %>
@@ -79,8 +79,8 @@
 		    		<%= render "devise/shared/error_messages", resource: @photo_new %>
 		    		<%= form_for @photo_new, url: photos_path do |f| %>
 
-		    			<%= f.text_area :introduction, placeholder:"作品名・アピールポイントなど", :size=>"40x5" %>
-
+		    			<%= f.text_area :introduction, placeholder:"作品名・アピールポイントなど", :size=>"40x5" %><br>
+		    			<span style="color: red">画像必須</span>
 		    			<%= f.attachment_field :photo_image,id: :post_img %>
 
 						<%= f.submit "追加する", style:"margin: 10px 0 0 350px" %>
