@@ -5,6 +5,8 @@
         </div>
         <div class="col-xs-6">
           <h2>ログイン</h2>
+
+          <%= link_to 'ゲストログイン用', homes_guest_sign_in_path, class:"button", method: :post %>
           <div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             
@@ -30,10 +32,9 @@
                 <% end %>
 
                 <div class="actions">
-                  <%= f.submit "Log in" %>
+                  <%= f.submit "ログイン" %>
                 </div>
               <% end %>
-
           </div>
         </div>
         </div>

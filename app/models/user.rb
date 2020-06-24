@@ -46,7 +46,11 @@ class User < ApplicationRecord
 
  
   def full_info
-    "お名前:" + self.name + "　担当者:" + self.staff + "　住所:"+self.address
+    if self.user_maker == true
+      "作り手" + "　お名前:" + self.name + "　担当者:" + self.staff + "　住所:"+self.address
+    else
+      "お店" +"　お名前:" + self.name + "　担当者:" + self.staff + "　住所:"+self.address
+    end
   end
   # フォロー機能用
   def follow(other_user)

@@ -1,4 +1,14 @@
 class HomesController < ApplicationController
+
+  # ゲストユーザー用
+  def new_guest
+    user = User.find_or_create_by!(email: '123@gmail.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+    sign_in user
+    redirect_to root_path
+  end
+
   # トップページ
   def top
     @user = User.where(user_status: true)
