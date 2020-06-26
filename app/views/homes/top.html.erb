@@ -99,14 +99,14 @@
 			       		<!-- そのまま新規登録画面へ -->
 			          <div class="registration-maker anm_mod right delay shadow">
 			            <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-			            <p>Sign_up for a maker</p>
+			            <p>Sign up for a maker</p>
 			          </div>
 			       	</div>
 			       	<!-- お店側 -->
 			       	<div class="col-xs-6"> 
 			       		<!-- user_makerをfalseにする -->
 			          <div class="registration-shop anm_mod left delay shadow">
-			          	<p>　Sign_up for a shop</p>			          	
+			          	<p>　Sign up for a shop</p>			          	
 			          	<%= link_to "お店として新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
 			          </div>
 			       	</div>
