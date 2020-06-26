@@ -55,11 +55,11 @@
 		    		<% if count < 4 %>
 						<div>
 							<div class="recommend_user">
-								<div style="padding:1px; border: solid 1px;">
-									<%= link_to user_path(user_maker.id), style:"padding: 1px", data: {"turbolinks" => false} do %>
+								<div style="padding:2px; border: solid 1px;">
+									<%= link_to user_path(user_maker.id), data: {"turbolinks" => false} do %>
 					            		<%= attachment_image_tag(user_maker, :profile_image, :fill, 250, 250 ) %>
-					        		<% end %><br>
-					        	</div>
+					        		<% end %>
+					        	</div><br>
 					        <span><%= user_maker.name %></span>
 							</div>
 					    </div>
@@ -75,11 +75,11 @@
 		    		<% if count < 4 %>
 						<div>
 							<div class="recommend_user">
-								<div style="padding:1px; border: solid 1px;">
+								<div style="padding:2px; border: solid 1px;">
 									<%= link_to user_path(user_shop.id), data: {"turbolinks" => false} do %>
 					            		<%= attachment_image_tag(user_shop, :profile_image, :fill, 250, 250 ) %>
-					        		<% end %><br>
-					        	</div>
+					        		<% end %>
+					        	</div><br>
 					        <span><%= user_shop.name %></span>
 							</div>
 					    </div>
