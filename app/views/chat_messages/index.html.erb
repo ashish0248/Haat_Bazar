@@ -12,7 +12,6 @@
 		       					<th>メールアドレス</th>
 		       					<th>住所</th>
 		       					<th></th>
-		       					<th>タグ</th>
 		       				</tr>
 	       				</thead>
 						<%  @users.each do |user| %>
@@ -39,7 +38,6 @@
 	       						<td><%= user.email %></td>
 	       						<td><%= user.address %></td>
 	       						<td><%= link_to "チャットルームへ",chat_message_path(user.id),class: "btn btn-info", style:"text-decoration: none;" %></td>
-	       						<td><%= render 'users/tag_list', tag_list: user.tag_list %></td>
 							</tr>
 						<% end %>
 						<%  @not_users.each do |user| %>
@@ -69,7 +67,6 @@
 		       						<td><%= user.email %></td>
 		       						<td><%= user.address %></td>
 		       						<td><%= link_to "チャットルームへ",chat_message_path(user.id),class: "btn btn-info", style:"text-decoration: none;" %></td>
-		       						<td><%= render 'users/tag_list', tag_list: user.tag_list %></td>
 								</tr>
 							<% end %>
 						<% end %>
