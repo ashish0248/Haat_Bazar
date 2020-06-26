@@ -4,7 +4,7 @@
         <!-- 検索フォーム -->
         <div class="text-right" style="margin-right: 20px; padding-bottom: 5px">
             <%= form_tag(documents_path, method: "get") do %>
-                <%= text_field_tag :keyword,  params[:keyword], placeholder:"宛先・書類番号から検索"%>
+                <%= text_field_tag :keyword,  params[:keyword], placeholder:"宛先・書類番号・発行日から検索"%>
                 <%= submit_tag 'Search' %>
             <% end %>
         </div>
@@ -29,6 +29,7 @@
         				<th>宛先</th>
         				<th>種類</th>
         				<th>書類番号</th>
+                <th>発行日</th>
         				<th></th>
         				<th></th>
         				<th></th>
@@ -60,7 +61,10 @@
           				</td>
                   <td>
                     <%= document.receipt_number %>
-                  </td>         
+                  </td>
+                  <td>
+                    <%= document.effective_date %>
+                  </td>                      
           				<td>
                     <% if document.send_status == false %>
           					   <%= link_to '編集',  edit_document_path(document.id), class: "glyphicon glyphicon-pencil", style:"text-decoration: none;" %>
@@ -106,6 +110,7 @@
                     <th>作成者</th>
                     <th>種類</th>
                     <th>書類番号</th>
+                    <th>発行日</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -137,7 +142,10 @@
                       </td>
                       <td>
                         <%= document.receipt_number %>
-                      </td>             
+                      </td>  
+                      <td>
+                        <%= document.effective_date %>
+                      </td>                                     
                       <td>
                         <%= link_to '表示',  document_path(document.id), style:"text-decoration: none;", :target=>["_blank"] %>
                       </td>

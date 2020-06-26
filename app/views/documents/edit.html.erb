@@ -59,7 +59,7 @@
 	           <%= f.text_area :remark, :size=>"60x5" %>
 	      </div>
 	      <!-- 書類の作成後は一覧ページ -->
-	      <%= f.submit '保存して確認', style:"width: 20%;margin: 10px 10% 0 30%", formtarget: "_blank"  %><br><br><br><br>
+	      <%= f.submit '保存して確認', style:"width: 20%;margin: 10px 10% 0 30%", formtarget: "_blank", 'data-disable-with' => false %><br><br><br><br>
           <%= link_to '書類一覧ページに戻る',  documents_path, class:"button" ,style:"text-decoration: none;" %>
           <% end %>    </div>
 </div>

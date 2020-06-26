@@ -10,11 +10,11 @@ class Document < ApplicationRecord
 
 
 	def self.search1(keyword)
-    	where(['receipt_number LIKE ? OR receiver_name LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+    	where(['receipt_number LIKE ? OR receiver_name LIKE ? OR effective_date LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
 	end
 
 	def self.search2(keyword)
-    	where(['receipt_number LIKE ? OR maker_name LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+    	where(['receipt_number LIKE ? OR maker_name LIKE ? OR effective_date LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
 	end
 
 end
