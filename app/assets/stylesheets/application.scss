@@ -232,8 +232,7 @@ background-image: image-url("top_2.jpg");
   float:left;
   height: 240px;
   width: 240px;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow: scroll;
 }
 
 .info{
