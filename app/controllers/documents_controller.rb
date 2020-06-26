@@ -100,11 +100,15 @@ class DocumentsController < ApplicationController
   	@document = Document.find(params[:id])
   	@items = Item.where(document_id: @document.id)
 
-    if @document.maker_id == current_user.id
-      #書類を作成した本人
-         #pdf化
+    #書類を作成した本人or受け取った人
+    if @document.maker_id == current_user.id or @document.receiver_id == current_user.id
         respond_to do |format|
-          format.html
+          format.html do
+            render layout: 'layouts/show_layouts.html',
+                   template: 'documents/show.html.erb',
+                   encording: 'UTF-8'
+          end
+          #pdf化
           format.pdf do
             render pdf: "書類",
                    layout: 'layouts/pdf_layouts.html',

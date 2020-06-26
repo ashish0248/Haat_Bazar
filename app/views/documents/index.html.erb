@@ -13,13 +13,12 @@
             <h3><%= @keyword %>の検索結果</h3>
           <% end %>
         </div>
-       	<div class="col-md-7 col-xs-7">
+        <div style=" margin-top: 40px;text-align: center;">
+          <h3><%= link_to '書類新規作成', new_document_path, class:"glyphicon glyphicon-file", style:"text-decoration: none;" %></h3>
+        </div>
+       	<div style="margin-top: 40px;" >
        		<h3>作成済み書類一覧</h3>
        	</div>
-       	 <div class="col-md-5 col-xs-5">
-       		<h3><%= link_to '新規作成', new_document_path, class:"glyphicon glyphicon-file", style:"text-decoration: none;" %></h3>
-       	</div>
-
         <% if @documents.empty? %>
               <h3>該当なし</h3>
         <% else %>
@@ -70,7 +69,7 @@
                     <% end %>
           				</td>
           				<td>
-          					<%= link_to '表示',  document_path(document.id), style:"text-decoration: none;" %>
+          					<%= link_to '表示',  document_path(document.id), style:"text-decoration: none;", :target=>["_blank"] %>
           				</td>
                   <td>
                     <%= link_to 'pdfで表示',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>
@@ -140,7 +139,7 @@
                         <%= document.receipt_number %>
                       </td>             
                       <td>
-                        <%= link_to '表示',  document_path(document.id), style:"text-decoration: none;" %>
+                        <%= link_to '表示',  document_path(document.id), style:"text-decoration: none;", :target=>["_blank"] %>
                       </td>
                       <td>
                         <%= link_to 'pdf',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>

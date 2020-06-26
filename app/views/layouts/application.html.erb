@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Haat Bazar</title>
+    <title>Haat Bazar | 作り手とお店をつなぐ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -33,13 +33,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-decoration: none; color: white">My page</a>
                   <ul class="dropdown-menu">
                       <li><%= link_to 'ユーザー情報', users_path, style:"text-decoration: none; color: black" %></li>
+                      <li><%= link_to 'プロフィール', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>                      
                       <li><%= link_to 'フォローの一覧',  relationships_path, style:"text-decoration: none; color: black" %></li>
                       <li><%= link_to "チャットルーム一覧", chat_messages_path, style:"text-decoration: none; color: black" %></li>
-                      <% if current_user.user_maker == true %>
-                          <li><%= link_to '屋号詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
-                      <% else %>
-                          <li><%= link_to '店舗詳細', user_path(current_user.id), data: {"turbolinks" => false}, style:"text-decoration: none; color: black" %></li>
-                      <% end %>
                       <li><%= link_to "書類一覧",  documents_path, style:"text-decoration: none; color: black" %></li>
                        <li><%= link_to "お問い合わせ",  new_home_path, style:"text-decoration: none; color: black" %></li>
                   </ul>

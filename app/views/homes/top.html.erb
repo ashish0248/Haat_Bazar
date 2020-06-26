@@ -21,7 +21,7 @@
     							<tr>
     								<td>EVENT</td>
     								<td>2020/06/07</td>
-    								<td>新規登録者応援キャンペーンについて</td>
+    								<td>新規登録者応援キャンペーンについて </td>
     							</tr>
     							<tr>
 
@@ -91,23 +91,23 @@
     </div>
 	<div class="container">
 		<div class="row" id="user_new">
+			<h1 class="absolute_sign_up" ><strong>SIGN UP ›</strong></h1>
 			<div class="animation">
-				<div class="registration-image anm_mod fast" style="margin-top: 130px;" >
+				<div class="registration-image anm_mod fast shadow" style="margin-top: 200px;" >
 			      <!-- 作り手側 -->
 			       	<div class="col-xs-6">
 			       		<!-- そのまま新規登録画面へ -->
 			          <div class="registration-maker anm_mod right delay shadow">
 			            <%= link_to "作り手として新規登録する", new_user_registration_path, style:"text-decoration: none; color: white", data: {"turbolinks" => false} %>
-			            <p>・制作した作品を多くのお店に向けて紹介したり、お店側からの制作の依頼を受けることができます</p>
-			            <p>・ご自身のホームページを持っていない方は紹介サイトとしてもご利用ができます</p>
+			            <p>Sign_up for a maker</p>
 			          </div>
 			       	</div>
 			       	<!-- お店側 -->
 			       	<div class="col-xs-6"> 
 			       		<!-- user_makerをfalseにする -->
-			          <div class="registration-shop anm_mod left delay shadow" style="padding: 10px;" >
-			            <p>・作り手と相談することでお店にあった作品の制作やオリジナルデザインの商品の制作を依頼できます</p>
-			          	<%= link_to "お店を新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
+			          <div class="registration-shop anm_mod left delay shadow">
+			          	<p>　Sign_up for a shop</p>			          	
+			          	<%= link_to "お店として新規登録する", new_user_registration_path(user_maker: 'false'), style:"text-decoration: none; color: black", data: {"turbolinks" => false}  %>
 			          </div>
 			       	</div>
 			    </div>
