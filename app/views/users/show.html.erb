@@ -4,7 +4,7 @@
        		<div class="col-xs-4">
 				<div>
 		    		<div>
-						<div>
+						<div style="padding:2px; border: solid 1px; width:256px;">
 				            <%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %>
 						</div>
 				        <div>
@@ -30,7 +30,7 @@
 				        		<%= link_to 'フォロー一覧へ',  relationships_path, class: "btn btn-primary", style: "color: white; text-decoration: none;" %>
 				        	<% end %>
 				        </div>
-				        <div style="margin: 50px 0">
+				        <div style="margin: 50px 0;">
 		    				<!-- 改行なども行ってくれるhelper -->
 		    				<%= simple_format @user.introduction %>
 		    			</div>
@@ -63,9 +63,14 @@
        		<div div class="col-xs-6">
 				<div>
 					<% @photos.each do |photo| %>
-						<%= attachment_image_tag(photo, :photo_image, :fill, 550, 550 ) %>
-						<!-- 改行なども行ってくれるhelper -->
-						<%= simple_format photo.introduction %>
+						<div class="shadow" style="margin-top: 50px;">
+							<%= attachment_image_tag(photo, :photo_image, :fill, 555, 550 ) %>
+							<!-- 改行なども行ってくれるhelper -->
+							<% unless photo.introduction.empty? %>
+							<!-- 改行なども行ってくれるhelper -->
+								<%= simple_format photo.introduction, style:"padding: 15px;" %>	
+							<% end %>
+						</div>
 						<div style="text-align: right;">
 							<% if @user == current_user %>
 								<%= link_to "編集する", edit_photo_path(photo.id), class: "glyphicon glyphicon-pencil", style:"text-decoration: none;" %><br>
