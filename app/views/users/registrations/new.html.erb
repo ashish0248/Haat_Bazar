@@ -1,0 +1,175 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-8">
+          <% if @user.user_maker == true %>
+            <h2>作り手　新規登録ページ</h2>
+          <% else %>
+            <h2>お店　新規登録ページ</h2>
+          <% end %>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div>
+              <!-- 前のページで入れてもらっている -->
+               <%= f.hidden_field :user_maker, :value => @user.user_maker %>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><%= f.label :プロフィール画像 %><span style="color: red">必須</span></th>
+                  <td><%= f.attachment_field :profile_image,id: :post_img %></td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                        <%= f.label :屋号 %>
+                      <% else %>
+                        <%= f.label :店舗名 %>
+                      <% end %>
+                       <span style="color: red">必須</span>
+                  </th>
+                  <td><%= f.text_field :name, autofocus: true %></td>
+                </tr> 
+
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                      <%= f.label :作り手名 %>
+                    <% else %>
+                      <%= f.label :担当者名 %>
+                    <% end %>
+                    <span style="color: red">必須</span>                    
+                  </th>
+                  <td><%= f.text_field :staff, autofocus: true %></td>
+                </tr>
+                 
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                      <%= f.label :作り手の紹介 %>
+                    <% else %>
+                      <%= f.label :お店の紹介 %>
+                    <% end %>
+                    <span style="color: red">必須</span>                    
+                  </th>
+                  <td><%= f.text_area :introduction, :size=>"60x10", autofocus: true %></td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <%= f.label :タグ（カンマで区切ってください） %>
+                  </th>
+                  <td>
+                    <%= f.text_field :tag_list, value: resource.tag_list.join(','), placeholder:"例）手作り,小物,クリスマス" %>
+                  </td>
+                </tr>
+
+                
+                
+                <tr>
+                  <th>
+                    <%= f.label :email %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  </td>
+                </tr>
+
+
+
+                <tr>
+                  <th>
+                    <%= f.label :郵便番号（ハイフンなし） %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>
+                    <%= f.label :住所 %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :address, autofocus: true, class: "address", id:"address_name" %>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>
+                    <%= f.label :電話番号（ハイフンなし） %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :phone_number, autofocus: true %>
+                  </td>
+                </tr>   
+
+
+                <tr>
+                  <th>
+                    <%= f.label :インスタグラム%>
+                  </th>
+                  <td>
+                    <%= f.text_field :instagram, autofocus: true, placeholder:"URL" %>
+                  </td>
+                </tr>   
+
+
+                <tr>
+                  <th>
+                     <%= f.label :フェイスブック%>
+                  </th>
+                  <td>
+                    <%= f.text_field :facebook, autofocus: true, placeholder:"URL" %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <%= f.label :ホームページ%>
+                  </th>
+                  <td>
+                    <%= f.text_field :homepage, autofocus: true, placeholder:"URL" %>
+                  </td>
+                </tr>  
+
+                 <tr>
+                  <th>
+                    <%= f.label :password %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br>
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>
+                     <%= f.label :password_confirmation %><span style="color: red">必須</span><br>
+                  </th>
+                  <td>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  </td>
+                </tr>  
+
+              </thead>
+            </table>
+
+            <div class="actions">
+              <%= f.submit "Sign up" %>
+            </div>
+          <% end %>
+
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+</div>

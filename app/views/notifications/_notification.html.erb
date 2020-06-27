@@ -1,0 +1,6 @@
+<div class="notification-view">
+	<%= link_to user_path(notification.visitor.id), style:"text-decoration: none; color: black", data: {"turbolinks" => false} do %>
+　		<%= attachment_image_tag(notification.visitor, :profile_image, :fill, 50, 50) %>
+	<% end %>
+  	<%= notification_form(notification) %><span class="moderate-font"><%= " (#{notification.created_at.to_s(:datetime_jp)})" %></span>
+</div>

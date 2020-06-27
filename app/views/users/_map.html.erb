@@ -1,0 +1,44 @@
+<h4>所在地</h4>
+<% if user.address.empty? %>
+  <h5>住所は不明です</h5>
+<%else %>
+  <%= user.address %>
+  <div id='map'></div>
+  <style>
+  #map {
+    height: 500px;
+    width: 500px;
+  }
+  </style>
+
+<% end %>
+
+
+
+
+<script>
+let map
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 10,
+  });
+
+    geocoder.geocode( { address:  '<%= user.address %>'}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        
+      }
+   }); 
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+</script>

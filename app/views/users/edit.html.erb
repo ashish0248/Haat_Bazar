@@ -1,0 +1,152 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-10">
+          <h2>ユーザー情報編集</h2>
+          <%= form_for @user, url: user_path(@user.id) do |f| %>
+            <%= render "devise/shared/error_messages", resource: @user %>
+
+            <div>
+              <!-- 前のページで入れてもらっている -->
+               <%= f.hidden_field :user_maker, :value => @user.user_maker %>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><%= f.label :プロフィール画像 %><span style="color: red">必須</span></th>
+                  <td>
+                    <%= attachment_image_tag(@user, :profile_image, :fill, 250, 250 ) %>
+                    <%= f.attachment_field :profile_image,id: :post_img %>
+                    </td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                        <%= f.label :屋号 %>
+                      <% else %>
+                        <%= f.label :店舗名 %>
+                      <% end %>
+                       <span style="color: red">必須</span>
+                  </th>
+                  <td><%= f.text_field :name, autofocus: true %></td>
+                </tr> 
+
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                      <%= f.label :作り手名 %>
+                    <% else %>
+                      <%= f.label :担当者名 %>
+                    <% end %>
+                    <span style="color: red">必須</span>                    
+                  </th>
+                  <td><%= f.text_field :staff, autofocus: true %></td>
+                </tr>
+                 
+                <tr>
+                  <th>
+                    <% if  @user.user_maker == true %>
+                      <%= f.label :作り手の紹介 %>
+                    <% else %>
+                      <%= f.label :お店の紹介 %>
+                    <% end %>
+                    <span style="color: red">必須</span>                    
+                  </th>
+                  <td><%= f.text_area :introduction, :size=>"60x10", autofocus: true %></td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <%= f.label :タグ（カンマで区切ってください） %>
+                  </th>
+                  <td>
+                    <%= f.text_field :tag_list, value: @user.tag_list.join(',') %>
+                  </td>
+                </tr>
+
+                
+                
+                <tr>
+                  <th>
+                    <%= f.label :email %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  </td>
+                </tr>
+
+
+
+                <tr>
+                  <th>
+                    <%= f.label :郵便番号（ハイフンなし） %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>
+                    <%= f.label :住所 %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :address, autofocus: true, class: "address", id:"address_name" %>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>
+                    <%= f.label :電話番号（ハイフンなし） %><span style="color: red">必須</span>
+                  </th>
+                  <td>
+                     <%= f.text_field :phone_number, autofocus: true %>
+                  </td>
+                </tr>   
+
+
+                <tr>
+                  <th>
+                    <%= f.label :インスタグラム（URL）%>
+                  </th>
+                  <td>
+                    <%= f.text_field :instagram, autofocus: true %>
+                  </td>
+                </tr>   
+
+
+                <tr>
+                  <th>
+                     <%= f.label :フェイスブック（URL）%>
+                  </th>
+                  <td>
+                    <%= f.text_field :facebook, autofocus: true %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>
+                    <%= f.label :ホームページ（URL）%>
+                  </th>
+                  <td>
+                    <%= f.text_field :homepage, autofocus: true %>
+                  </td>
+                </tr> 
+
+              </thead>
+            </table>
+
+            <div class="actions">
+              <%= f.submit "変更を更新する" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+</div>

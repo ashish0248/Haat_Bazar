@@ -1,0 +1,25 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+       		<div>
+				<h1><%= @user.name %>さんとのチャット</h1>
+				<% if @user.user_status == false %>
+					<span style="color: red;">退会したユーザーです</span>
+				<% end %>
+			</div>
+			<div class="col-xs-3">
+				<%= attachment_image_tag(@user, :profile_image, :fill, 200, 200 ) %>
+       		</div>
+       		<%= render "devise/shared/error_messages", resource: @chat_message_new %>
+			<div id="message" class="col-xs-8">
+				<!-- @userは通知機能用 -->
+				<% if @sum == 0 %>
+					<span>全てのメッセージを表示しています</span>
+				<% else %>
+					<%= link_to 'さらに10件表示', chat_message_path(@user.id, count: @count), style: "font-size: 20px; margin-left: 300px" %>
+				<% end %>
+				<%= render "chat_messages/message", chat_messages: @chat_messages, chat_message_new: @chat_message_new, user: @user %>
+			</div>
+      </div>
+    </div>
+</div>

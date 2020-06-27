@@ -1,0 +1,163 @@
+<div class="body">
+    <div class="container">
+       <div class="row">
+        <!-- 検索フォーム -->
+        <div class="text-right" style="margin-right: 20px; padding-bottom: 5px">
+            <%= form_tag(documents_path, method: "get") do %>
+                <%= text_field_tag :keyword,  params[:keyword], placeholder:"宛先・書類番号・発行日から検索"%>
+                <%= submit_tag 'Search' %>
+            <% end %>
+        </div>
+        <div>
+          <% if @keyword %>
+            <h3><%= @keyword %>の検索結果</h3>
+          <% end %>
+        </div>
+        <div style=" margin-top: 40px;text-align: center;">
+          <h3><%= link_to '書類新規作成', new_document_path, class:"glyphicon glyphicon-file", style:"text-decoration: none;" %></h3>
+        </div>
+       	<div style="margin-top: 40px;" >
+       		<h3>作成済み書類一覧</h3>
+       	</div>
+        <% if @documents.empty? %>
+              <h3>該当なし</h3>
+        <% else %>
+        	<table class="table">
+        		<thead>
+        			<tr>
+        				<th></th>
+        				<th>宛先</th>
+        				<th>種類</th>
+        				<th>書類番号</th>
+                <th>発行日</th>
+        				<th></th>
+        				<th></th>
+        				<th></th>
+                <th></th>
+                <th></th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<% @documents.each do |document| %>
+        			<% user = User.find(document.receiver_id) %>
+          			<tr>
+          				<td>
+                    <%= link_to user_path(user.id) do %>
+          					 <%= attachment_image_tag(user, :profile_image, :fill, 70, 70 ) %>
+                    <% end %>
+          				</td>
+          				<td><%= user.name %></td>
+          				<td>
+          					<% if document.document_status == '1' %>
+      					  		<span>見積書</span>
+      					  	<% elsif document.document_status == '2' %>
+      					  		<span>発注書</span>
+      					  	<% end %>
+      					  	<% if document.document_status == '3' %>
+      					  		<span>納品書</span>
+      					  	<% elsif document.document_status == '4' %>
+      					  		<span>請求書</span>
+            				<% end %>
+          				</td>
+                  <td>
+                    <%= document.receipt_number %>
+                  </td>
+                  <td>
+                    <%= document.effective_date %>
+                  </td>                      
+          				<td>
+                    <% if document.send_status == false %>
+          					   <%= link_to '編集',  edit_document_path(document.id), class: "glyphicon glyphicon-pencil", style:"text-decoration: none;" %>
+                    <% else %>
+                        <span>編集不可</span>
+                    <% end %>
+          				</td>
+          				<td>
+          					<%= link_to '表示',  document_path(document.id), style:"text-decoration: none;", :target=>["_blank"] %>
+          				</td>
+                  <td>
+                    <%= link_to 'pdfで表示',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>
+                  </td>
+                  <td>
+                    <% if document.send_status == false %>
+                      <%= link_to '送信',  document_path(document.id, status: 1), style:"text-decoration: none;", send_status:true, method: :patch, "data-confirm" => "本当に送信しますか？書類の編集及び削除はできなくなります" %>
+                    <% else %>
+                      <span>送信済み</span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if document.send_status == false %>
+                      <%= link_to "", document_path(document.id), class:"glyphicon glyphicon-trash", style:"text-decoration: none;", method: :delete, "data-confirm" => "書類を削除しますか？" %>
+                    <% else %>
+                      <span>削除不可</span>
+                    <% end %>
+                  </td>         
+          			</tr>
+        			<% end %>
+        		</tbody>
+          </table>
+        <% end %>
+
+        <div style="margin-top: 100px">
+            <h3>受信書類一覧</h3>
+            <% if @received_documents.empty? %>
+                  <h3>該当なし</h3>
+            <% else %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>作成者</th>
+                    <th>種類</th>
+                    <th>書類番号</th>
+                    <th>発行日</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @received_documents.each do |document| %>
+                    <% user = User.find(document.maker_id) %>
+                    <tr>
+                      <td>
+                        <%= link_to user_path(user.id) do %>
+                          <%= attachment_image_tag(user, :profile_image, :fill, 70, 70 ) %>
+                        <% end %>
+                      </td>
+                      <td><%= user.name %></td>
+                      <td>
+                        <% if document.document_status == '1' %>
+                          <span>見積書</span>
+                        <% elsif document.document_status == '2' %>
+                          <span>発注書</span>
+                        <% end %>
+                        <% if document.document_status == '3' %>
+                          <span>納品書</span>
+                        <% elsif document.document_status == '4' %>
+                          <span>請求書</span>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= document.receipt_number %>
+                      </td>  
+                      <td>
+                        <%= document.effective_date %>
+                      </td>                                     
+                      <td>
+                        <%= link_to '表示',  document_path(document.id), style:"text-decoration: none;", :target=>["_blank"] %>
+                      </td>
+                      <td>
+                        <%= link_to 'pdf',  document_path(format: :pdf, id: document.id), :target=>["_blank"], style:"text-decoration: none;" %>
+                      </td>    
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+        </div>
+      </div>
+    </div>
+</div>

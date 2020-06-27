@@ -1,0 +1,39 @@
+<div style="width: auto">
+				<% chat_messages.each do |chat| %>
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>
+									<% if chat.user_id == current_user.id %>
+										<div style="text-align: right;">
+											<span style="font-size: 20px">
+												<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %><br>
+												<%= chat.message %>
+											</span>
+											<p>(<%= chat.created_at.to_s(:datetime_jp) %>)</p>
+										</div>
+									<% else %>
+										<div style="text-align: left;">
+											<span style="font-size: 30px">
+												<%= attachment_image_tag(chat, :chat_image, :fill, 250, 250 ) %><br>
+												<%= chat.message %>
+											</span>
+										</div>
+											<p>(<%= chat.created_at.to_s(:datetime_jp) %>)</p>
+									<% end %>		
+								</td>
+							</tr>					
+						</tbody>
+					</table>
+				<% end %>
+			</div>
+
+			<div style="width: 400px; text-align: right;">
+				<%= form_with(model:chat_message_new,data:{remote: true}) do |f| %>
+					<%= f.attachment_field :chat_image,id: :post_img %>
+					<%= f.text_field :message, placeholder:"メッセージか画像を送信してください" %>
+					<%= f.hidden_field :chat_room_id %>
+					<%= f.hidden_field :user_id, :value => user.id %>
+					<%= f.submit "送信" %>
+				<% end %>
+</div>

@@ -1,0 +1,30 @@
+
+<!-- お問い合わせフォーム -->
+<div class="body">
+    <div class="container">
+      <div class="row">
+        <h3>HaatBazar へのお問い合わせ</h3>
+        <div>
+          <%= form_for(@contact_new, url: homes_path) do |f| %>
+          <table class="table" >
+              <tbody>
+                  <tr>
+                      <td><%= f.label :お名前 %></td>
+                      <td><%= f.text_field :name %></td>
+                  </tr>
+                  <tr>
+                      <td><%= f.label :Eメールアドレス %></td>
+                      <td><%= f.text_field :email %><br></td>
+                  </tr>
+                  <tr>
+                      <td><%= f.label :お問い合わせ内容 %></td>
+                      <td><%= f.text_area :message, :size=>"60x10" %></td>
+                  </tr>                                    
+              </tbody>
+          </table>
+            <%= f.submit '送信', style:"width:10%; margin-left: 70%;" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+</div>
