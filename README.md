@@ -1,4 +1,5 @@
 # Haat Bazar
+![image](https://user-images.githubusercontent.com/61741711/86092838-0909b980-bae9-11ea-977e-10ffcc9386ac.png)
 ## サイト概要
 『作り手』と『お店』をつなぐB to Bの卸売専用サイト
 ### サイトテーマ
