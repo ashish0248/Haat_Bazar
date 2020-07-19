@@ -27,8 +27,5 @@ B to CからB toB to Bへの展開を考えている『作り手』
 ・既存の作品の取引だけではなく、テーマやイベントにあった制作の依頼ができる  
 ・お店のテーマやイベントにあった作品を作ってもらいたいとき  
 
-
-## 設計書
-
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/15HH3gJ1HYQHmLaGlStf08SUDuDxCLRvtYGczPPuckAE/edit?usp=sharing
