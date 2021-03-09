@@ -3,8 +3,7 @@
 ## サイト概要
 『作り手』と『お店』をつなぐB to Bの卸売専用サイト
 ## App URL
-https://haatbazar.work/
-
+https://haatbazar.work
 ヘッダーのloginからゲストログインできます
 
 ### サイトテーマ
