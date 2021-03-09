@@ -2,6 +2,8 @@
 ![image](https://user-images.githubusercontent.com/61741711/86092838-0909b980-bae9-11ea-977e-10ffcc9386ac.png)
 ## サイト概要
 『作り手』と『お店』をつなぐB to Bの卸売専用サイト
+## App URL
+https://haatbazar.work/
 ### サイトテーマ
 個人や小規模の『作り手』と『お店』の双方が安心して交渉し、受注や発注ができるサイト
 
