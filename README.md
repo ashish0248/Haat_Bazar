@@ -6,7 +6,7 @@
 
 ## サイト概要
 『作り手』と『お店』をつなぐB to Bの卸売専用サイト
-## App URL
+## App URL(現在は停止中)
 https://haatbazar.work
 
 ゲストログインはヘッダーのLoginから
